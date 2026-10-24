@@ -4,17 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Cercle 37</title>
-<meta name="description" content="Blackjack, roulette européenne et poker contre des joueurs fictifs. Argent fictif, gratuit et sans inscription : ta partie s'enregistre sur ton appareil.">
+<meta name="description" content="Blackjack, roulette européenne et poker, seul ou entre amis. Argent fictif, gratuit et sans inscription : ta partie s'enregistre sur ton appareil.">
 <meta name="theme-color" content="#F8FAF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151E1A" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cercle 37">
 <meta property="og:title" content="Cercle 37 · Faites vos jeux">
-<meta property="og:description" content="Blackjack, roulette européenne et poker contre des joueurs fictifs. Argent fictif, gratuit et sans inscription : ta partie s'enregistre sur ton appareil.">
+<meta property="og:description" content="Blackjack, roulette européenne et poker, seul ou entre amis. Argent fictif, gratuit et sans inscription : ta partie s'enregistre sur ton appareil.">
 <meta property="og:image" content="https://rubn2006.github.io/cercle37/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
 <meta property="og:url" content="https://rubn2006.github.io/cercle37/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -389,6 +388,45 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 @media (max-width:760px){.pk-setup{grid-template-columns:1fr}.levels{grid-template-columns:1fr}}
 @media (max-width:640px){.pk-wrap{aspect-ratio:4/5.2;--cwb:clamp(34px,11.5cqw,52px);--cws:clamp(22px,6.6cqw,30px);--cwm:clamp(46px,14cqw,64px)}.pk-felt{inset:9% 9%}.seat{width:clamp(84px,25cqw,120px)}.avatar{width:28px;height:28px}.plate{padding:3px 9px 3px 3px;gap:6px}.pl-name{font-size:12px}}
 
+/* ---------- entre amis ---------- */
+.mp-bar{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--r);box-shadow:var(--shadow);padding:10px 14px;margin-bottom:16px}
+.mp-dot{width:10px;height:10px;border-radius:50%;background:var(--muted);flex:none}
+.mp-dot.on{background:var(--win)}
+.mp-dot.lost,.mp-dot.connecting{background:var(--accent);animation:think 1.2s ease-in-out infinite}
+.mp-txt{display:grid;line-height:1.25;min-width:0;flex:1 1 180px}
+.mp-txt span{font-size:12.5px;color:var(--muted)}
+.mp-people{display:flex;flex-wrap:wrap}
+.mp-av{width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;border:2px solid var(--surface);margin-left:-6px}
+.mp-av:first-child{margin-left:0}
+.mp-av.off{opacity:.35}
+.mp-acts{display:flex;gap:6px;flex-wrap:wrap}
+.mp-code{font-family:var(--font-display);font-size:clamp(28px,8vw,40px);letter-spacing:.14em;text-align:center;padding:12px;background:var(--surface-2);border-radius:14px;user-select:all}
+.mp-panel{margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:14px 24px;flex-wrap:wrap;border:1.5px solid var(--accent)}
+.mp-panel>div:first-child{flex:1 1 320px;min-width:0}
+.mp-panel h3{margin-bottom:6px}
+.mp-join{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.mp-join input{width:150px;text-transform:uppercase;letter-spacing:.08em}
+.mp-list{display:grid;gap:6px;font-size:13px}
+.mp-list .row{justify-content:space-between;flex-wrap:nowrap}
+.mp-list .who{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mp-list .who i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.ro-chip.other{z-index:3;transform:translate(calc(-50% + var(--ox)),calc(-50% + var(--oy)))}
+.ro-chip.other .chip{--chip:clamp(14px,1.9cqw,20px);box-shadow:0 0 0 2px var(--pc),0 2px 0 rgba(0,0,0,.3)}
+.ro-chip.other .chip span{display:none}
+.s-timer{display:block;width:80%;max-width:120px;height:4px;border-radius:2px;background:rgba(127,127,127,.3);overflow:hidden;margin:2px auto 0}
+.s-timer i{display:block;height:100%;background:var(--accent);transform-origin:left;animation:shrink var(--d) linear forwards}
+@keyframes shrink{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+.bj-hands.multi{--cw:clamp(38px,4.6vw,56px);gap:12px;align-items:flex-end}
+.mseat{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 10px;border-radius:16px;min-width:110px}
+.mseat.me{background:rgba(255,236,190,.09)}
+.mseat.gone{opacity:.45}
+.mname{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--on-felt);white-space:nowrap}
+.mname i{width:10px;height:10px;border-radius:50%;background:var(--pc);box-shadow:0 0 0 2px rgba(0,0,0,.2)}
+.mname b{color:#FFE3A3}
+.mhands{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.mseat .hand{padding:6px 8px}
+.mseat-idle{font-size:12.5px;color:var(--print);display:flex;align-items:center;gap:6px;min-height:40px}
+
 /* ---------- fenêtres & messages ---------- */
 .modal-back{position:fixed;inset:0;z-index:60;background:rgba(8,14,11,.52);backdrop-filter:blur(3px);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));animation:fadeIn .18s ease-out}
 @keyframes fadeIn{from{opacity:0}}
@@ -429,6 +467,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 </header>
 
 <main class="gutter">
+  <div id="mp-bar" class="mp-bar" hidden></div>
   <section id="view-salon" class="view"></section>
 
   <section id="view-blackjack" class="view" hidden>
@@ -464,6 +503,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <div class="ro-panel">
         <div class="croupier" id="ro-call" aria-live="polite">Faites vos jeux</div>
         <div class="ro-result" id="ro-result"><span class="ro-tip">Choisis un jeton puis touche le tapis. Touche un trait ou un coin entre deux numéros pour jouer à cheval, en carré ou en transversale.</span></div>
+        <div id="ro-mp"></div>
         <div><div class="lbl">Derniers numéros</div><div class="pills" id="ro-pills"></div></div>
         <div id="ro-split"></div>
       </div>
@@ -475,7 +515,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 
   <section id="view-poker" class="view" hidden>
     <div class="game-head">
-      <div><h2>Poker</h2><p class="sub">Texas Hold'em sans limite, contre des joueurs fictifs</p></div>
+      <div><h2>Poker</h2><p class="sub" id="pk-sub">Texas Hold'em sans limite, contre des joueurs fictifs</p></div>
       <div class="head-tools" id="pk-head"></div>
     </div>
     <div id="pk-setup"></div>
@@ -617,7 +657,7 @@ function addHist(type, label, amount) {
 }
 function recordBest(net) { if (net > S.stats.best) S.stats.best = round2(net); }
 function tableStack() { return PK.phase !== 'setup' && PK.seats[0] ? PK.seats[0].stack + (PK.phase === 'hand' ? PK.seats[0].total : 0) : 0; }
-const gameInProgress = () => PK.phase !== 'setup' || BJ.phase !== 'bet' || BJ.busy || RO.spinning;
+const gameInProgress = () => PK.phase !== 'setup' || BJ.phase !== 'bet' || BJ.busy || RO.spinning || !!MP.role;
 function netResult() { return round2(S.balance + tableStack() + S.pending.bj + S.pending.ro - S.deposited); }
 function deposit(v) {
   v = round2(v);
@@ -730,6 +770,7 @@ function show(v) {
   VIEW = v;
   for (const id of ['salon', 'blackjack', 'roulette', 'poker']) $('#view-' + id).hidden = id !== v;
   $$('.tab').forEach(t => t.classList.toggle('on', t.dataset.view === v));
+  mpRenderBar();
   refreshViews();
   window.scrollTo({ top: 0 });
 }
@@ -892,7 +933,7 @@ function renderSalon() {
   el.innerHTML = `
     <div class="salon-head">
       <div><p class="eyebrow">${hello}, ${esc(S.pseudo)}</p><h1>Faites vos jeux.</h1>
-        <p class="lede">Blackjack, roulette européenne et poker contre des joueurs fictifs. Les cartes et le cylindre sont tirés au hasard, comme à une vraie table, et ta partie s'enregistre toute seule.</p></div>
+        <p class="lede">Blackjack, roulette européenne et poker, seul contre des joueurs fictifs ou en même temps avec tes potes. Les cartes et le cylindre sont tirés au hasard, comme à une vraie table, et ta partie s'enregistre toute seule.</p></div>
       <div class="kpis">
         <div><span>Solde</span><b>${money(S.balance)}</b></div>
         <div><span>Résultat net</span><b class="${net > 0 ? 'pos' : net < 0 ? 'neg' : ''}">${money(net, true)}</b></div>
@@ -920,6 +961,7 @@ function renderSalon() {
         <button type="button" class="btn" data-go="poker">Jouer au poker</button>
       </article>
     </div>
+    ${mpSalonPanel()}
     <div class="salon-low">
       <div class="panel"><h3>Ton bilan</h3>
         <table class="mini-table"><tbody>
@@ -952,7 +994,7 @@ const BJ_TABLES = [
   { name: 'Haute limite', min: 100, max: 25000, chips: [25, 100, 500, 1000, 5000] }
 ];
 const BJ = { shoe: [], cut: 0, phase: 'bet', bet: 0, undo: [], last: 0, dealer: [], hole: true, hands: [], active: 0, ins: 0, stake: 0, msg: '', msgKind: '', busy: false, seen: new Set(), flip: new Set(), id: 0, clearT: 0 };
-const bjTable = () => BJ_TABLES[S.settings.bjTable] || BJ_TABLES[0];
+const bjTable = () => BJ_TABLES[mpIs('blackjack') && MP.bjv ? MP.bjv.table : S.settings.bjTable] || BJ_TABLES[0];
 const cardVal = c => c.r === 12 ? 11 : c.r >= 8 ? 10 : c.r + 2;
 function bjVal(cards) { let t = 0, aces = 0; for (const c of cards) { if (c.r === 12) { aces++; t += 11; } else t += c.r >= 8 ? 10 : c.r + 2; } while (t > 21 && aces) { t -= 10; aces--; } return { t, soft: aces > 0 }; }
 function bjNewShoe() { const s = []; for (let d = 0; d < 6; d++) for (let su = 0; su < 4; su++) for (let r = 0; r < 13; r++) s.push({ r, s: su }); shuffle(s); BJ.shoe = s; BJ.cut = Math.floor(s.length * (0.22 + rand() * 0.08)); }
@@ -1009,6 +1051,8 @@ const ACT_LABEL = { hit: 'tirer', stand: 'rester', double: 'doubler', split: 's�
 function bjMsg(text, kind = '') { BJ.msg = text; BJ.msgKind = kind; }
 function bjRender() {
   if (!S) return;
+  if (mpIs('blackjack')) { bjmRender(); return; }
+  $('#bj-hands').classList.remove('multi'); $('#bj-table').closest('label').hidden = false;
   const t = bjTable();
   const sel = $('#bj-table');
   sel.innerHTML = BJ_TABLES.map((x, i) => `<option value="${i}"${i === S.settings.bjTable ? ' selected' : ''}>${x.name} · ${money(x.min)} à ${money(x.max)}</option>`).join('');
@@ -1066,6 +1110,7 @@ function bjRender() {
 function bjClearTable() { clearTimeout(BJ.clearT); if (BJ.phase === 'bet' && !BJ.busy && BJ.hands.length) { BJ.hands = []; BJ.dealer = []; bjMsg(''); } }
 function bjAddChip(v) {
   if (BJ.phase !== 'bet' || BJ.busy) return;
+  if (mpIs('blackjack') && (!MP.bjv || MP.bjv.phase !== 'bet' || (MP.bjv.seats.find(x => x.pid === MP.me.id) || { ready: true }).ready)) return;
   bjClearTable();
   const t = bjTable();
   if (BJ.bet + v > t.max) { toast(`Mise maximum à cette table : ${money(t.max)}.`); return; }
@@ -1226,7 +1271,7 @@ function bjSettle() {
 }
 $('#bj-tray').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b || b.disabled) return;
-  if (b.dataset.chip) bjAddChip(+b.dataset.chip); else if (b.dataset.bj) bjCmd(b.dataset.bj);
+  if (b.dataset.chip) bjAddChip(+b.dataset.chip); else if (b.dataset.bjm) bjmCmd(b.dataset.bjm); else if (b.dataset.bj) bjCmd(b.dataset.bj);
 });
 $('#bj-table').onchange = e => { if (BJ.phase !== 'bet' || BJ.busy) return; S.settings.bjTable = +e.target.value; BJ.bet = 0; BJ.undo = []; save(); bjRender(); };
 $('#bj-hints').onclick = () => { S.settings.hints = !S.settings.hints; save(); bjRender(); };
@@ -1296,6 +1341,19 @@ function roRenderChips() {
     const v = chipsFor(amt, 1)[0];
     html += `<span class="ro-chip${RO.wins.includes(id) ? ' won' : ''}${RO.pop.includes(id) ? ' pop' : ''}" style="left:${(q.x + q.w / 2) / W * 100}%;top:${(q.y + q.h / 2) / Hh * 100}%"><span class="chip" style="--c:${CHIP_COL[v][0]};--ct:${CHIP_COL[v][1]}"><span>${short(amt)}</span></span></span>`;
   }
+  if (mpIs('roulette') && MP.ro) {
+    let k = 0;
+    for (const p of MP.players) {
+      const bets = p.id === MP.me.id ? null : MP.ro.bets[p.id];
+      if (!bets || !Object.keys(bets).length) continue;
+      k++;
+      for (const [id, amt] of Object.entries(bets)) {
+        if (!ROB[id]) continue;
+        const q = roRect(ROB[id].rect), v = chipsFor(amt, 1)[0];
+        html += `<span class="ro-chip other" style="left:${(q.x + q.w / 2) / W * 100}%;top:${(q.y + q.h / 2) / Hh * 100}%;--pc:${p.color};--ox:${6 + k * 5}px;--oy:${-4 - k * 5}px" title="${esc(p.name)} : ${money(amt)}"><span class="chip" style="--c:${CHIP_COL[v][0]};--ct:${CHIP_COL[v][1]}"><span></span></span></span>`;
+      }
+    }
+  }
   if (RO.result != null && !Object.keys(RO.bets).length) {
     const q = roRect(ROB['n' + RO.result].rect);
     html += `<span class="dolly" style="left:${(q.x + q.w / 2) / W * 100}%;top:${(q.y + q.h / 2) / Hh * 100}%"></span>`;
@@ -1306,17 +1364,31 @@ function roRenderChips() {
   if (RO.result != null) { const c = $(`#ro-board .rc[data-n="${RO.result}"]`); if (c) c.classList.add('won'); }
 }
 function roRenderTray() {
-  const total = roTotal();
+  const total = roTotal(), mpRo = mpIs('roulette') && MP.ro;
+  let main;
+  if (mpRo) {
+    const online = MP.players.filter(p => p.on), rc = online.filter(p => MP.ro.ready[p.id]).length;
+    main = `${mpIsHost() ? `<button type="button" class="btn" data-ro="spin"${RO.spinning ? ' disabled' : ''}>Lancer maintenant</button>` : ''}<button type="button" class="btn ${MP.roReady ? 'primary' : 'accent'} big" data-ro="ready" aria-pressed="${MP.roReady}"${RO.spinning ? ' disabled' : ''}>${MP.roReady ? 'Prêt' : 'Je suis prêt'} · ${rc}/${online.length} <kbd>Espace</kbd></button>`;
+  } else main = !total && S.balance < 1 && !RO.spinning ? '<button type="button" class="btn accent big" data-ro="fund">Alimenter mon solde</button>' : `<button type="button" class="btn primary big" data-ro="spin"${RO.spinning ? ' disabled' : ''}>Lancer la bille <kbd>Espace</kbd></button>`;
   $('#ro-tray').innerHTML = `${rackHTML(RO_CHIPS, RO.chip, Infinity)}
-    <div class="readout"><span class="lbl">Mise totale</span><b>${money(total)}</b><small>${RO.spinning ? 'Rien ne va plus' : `Solde après le lancer : ${money(Math.max(0, S.balance - total))}`}</small></div>
+    <div class="readout"><span class="lbl">Mise totale</span><b>${money(total)}</b><small>${RO.spinning ? 'Rien ne va plus' : mpRo ? (MP.roReady ? 'La bille part dès que tout le monde est prêt' : 'Place tes jetons, puis dis que tu es prêt') : `Solde après le lancer : ${money(Math.max(0, S.balance - total))}`}</small></div>
     <div class="tray-btns">
       <button type="button" class="btn" data-ro="undo"${RO.undo.length && !RO.spinning ? '' : ' disabled'}>Annuler</button>
       <button type="button" class="btn" data-ro="clear"${total && !RO.spinning ? '' : ' disabled'}>Effacer</button>
       ${!total && RO.last ? `<button type="button" class="btn" data-ro="rebet"${RO.spinning ? ' disabled' : ''}>Rejouer ${money(Object.values(RO.last).reduce((a, b) => a + b, 0))}</button>` : `<button type="button" class="btn" data-ro="x2"${total && !RO.spinning ? '' : ' disabled'}>×2</button>`}
-      ${!total && S.balance < 1 && !RO.spinning ? '<button type="button" class="btn accent big" data-ro="fund">Alimenter mon solde</button>' : `<button type="button" class="btn primary big" data-ro="spin"${RO.spinning ? ' disabled' : ''}>Lancer la bille <kbd>Espace</kbd></button>`}
+      ${main}
     </div>`;
+  mpRoLocalBets();
 }
 function roRenderPanel() {
+  const box = $('#ro-mp');
+  if (mpIs('roulette') && MP.ro) {
+    box.innerHTML = `<div class="lbl">À la table</div><div class="mp-list">${MP.players.map(p => {
+      const bets = p.id === MP.me.id ? RO.bets : (MP.ro.bets[p.id] || {});
+      const tot = Object.values(bets).reduce((a, b) => a + b, 0), r = MP.ro.res[p.id];
+      return `<div class="row"><span class="who" style="--c:${p.color}"><i></i>${esc(p.id === MP.me.id ? 'Toi' : p.name)}${p.on ? '' : ' · absent'}</span><span>${MP.ro.ready[p.id] ? '<b class="pos">prêt</b> · ' : ''}${tot ? money(tot) : 'pas de mise'}${r && r.total ? ` · <b class="${r.net > 0 ? 'pos' : r.net < 0 ? 'neg' : ''}">${money(r.net, true)}</b>` : ''}</span></div>`;
+    }).join('')}</div>`;
+  } else box.innerHTML = '';
   $('#ro-sub').textContent = S.settings.partage ? 'règle de la partage sur le zéro' : 'sans partage';
   const pills = S.roHist.slice(0, 16);
   $('#ro-pills').innerHTML = pills.length ? pills.map(n => `<span class="pill ${colorOf(n)}">${n}</span>`).join('') : '<span class="fine">Aucun tirage pour l\'instant.</span>';
@@ -1374,7 +1446,8 @@ function roPlace(id, remove) {
 }
 function roCmd(c) {
   if (c === 'fund') return openWallet();
-  if (c === 'spin') return roSpin();
+  if (c === 'ready') return mpRoToggleReady();
+  if (c === 'spin') return mpIs('roulette') ? mpRoSpin() : roSpin();
   if (RO.spinning) return;
   if (c === 'x2' && RO.settled) { clearTimeout(RO.clearT); RO.settled = false; RO.wins = []; RO.result = null; RO.undo = [Object.entries(RO.bets)]; }
   else roFresh();
@@ -1393,11 +1466,15 @@ function roCmd(c) {
   }
   roRenderChips(); roRenderTray();
 }
-async function roSpin() {
+async function roSpin(forced) {
   if (RO.spinning) return;
-  const total = roTotal();
-  if (!total) { toast('Place au moins une mise sur le tapis.'); return; }
-  if (total > S.balance) { lowFunds(); return; }
+  const mpRo = mpIs('roulette');
+  if (mpRo && forced === undefined) { if (mpIsHost()) mpRoSpin(); else mpRoToggleReady(); return; }
+  let total = roTotal();
+  if (forced === undefined) {
+    if (!total) { toast('Place au moins une mise sur le tapis.'); return; }
+    if (total > S.balance) { lowFunds(); return; }
+  } else if (total > S.balance) { RO.bets = {}; RO.undo = []; total = 0; }
   clearTimeout(RO.clearT);
   if (RO.settled) { RO.settled = false; RO.undo = [Object.entries(RO.bets)]; }
   debit(total); S.pending.ro = total; save(); renderWallet();
@@ -1405,7 +1482,7 @@ async function roSpin() {
   $('#ro-call').textContent = 'Rien ne va plus';
   $('#ro-result').innerHTML = '<span class="ro-tip">La bille tourne…</span>';
   roRenderTray(); roRenderChips();
-  const k = rngInt(37), n = WHEEL[k];
+  const k = forced !== undefined ? forced : rngInt(37), n = WHEEL[k];
   await roAnimate(k);
   let ret = 0, partage = 0;
   for (const [id, amt] of Object.entries(RO.bets)) {
@@ -1416,16 +1493,19 @@ async function roSpin() {
   ret = round2(ret);
   const net = round2(ret - total);
   credit(ret); S.pending.ro = 0;
-  S.stats.ro.n++; S.stats.ro.net = round2(S.stats.ro.net + net); recordBest(net);
+  if (total) {
+    S.stats.ro.n++; S.stats.ro.net = round2(S.stats.ro.net + net); recordBest(net);
+    addHist('roulette', `Roulette${mpRo ? ' entre amis' : ''} · ${n} ${n === 0 ? '' : RED.has(n) ? 'rouge' : 'noir'}`.trim(), net);
+  }
   S.roHist.unshift(n); if (S.roHist.length > 100) S.roHist.length = 100;
-  addHist('roulette', `Roulette · ${n} ${n === 0 ? '' : RED.has(n) ? 'rouge' : 'noir'}`.trim(), net);
   save(); renderWallet();
   RO.result = n; RO.spinning = false; RO.settled = true;
   const parts = n === 0 ? ['Zéro'] : [RED.has(n) ? 'Rouge' : 'Noir', n % 2 ? 'Impair' : 'Pair', n <= 18 ? 'Manque' : 'Passe'];
   $('#ro-call').textContent = 'Faites vos jeux';
-  $('#ro-result').innerHTML = `<span class="ro-num ${colorOf(n)}">${n}</span><span class="ro-desc"><b>${parts.join(' · ')}</b><span class="${net > 0 ? 'pos' : net < 0 ? 'neg' : ''}">${net > 0 ? `Gain ${money(net, true)}` : net < 0 ? `Perte ${money(net)}` : 'Mise rendue'}${partage ? ` · partage : ${money(round2(partage))} rendus` : ''}</span></span>`;
-  if (net > 0) Snd.win(); else Snd.lose();
+  $('#ro-result').innerHTML = `<span class="ro-num ${colorOf(n)}">${n}</span><span class="ro-desc"><b>${parts.join(' · ')}</b><span class="${net > 0 ? 'pos' : net < 0 ? 'neg' : ''}">${!total ? 'Pas de mise ce tour' : net > 0 ? `Gain ${money(net, true)}` : net < 0 ? `Perte ${money(net)}` : 'Mise rendue'}${partage ? ` · partage : ${money(round2(partage))} rendus` : ''}</span></span>`;
+  if (net > 0) Snd.win(); else if (total) Snd.lose();
   RO.pocket = k;
+  if (mpRo) mpRoAfterSpin(net, total, n);
   roRenderPanel(); roRenderChips(); roRenderTray();
   RO.clearT = setTimeout(() => { if (!RO.spinning && RO.settled) { RO.settled = false; RO.bets = {}; RO.undo = []; RO.wins = []; roRenderChips(); roRenderTray(); } }, 2400 * speedK());
 }
@@ -1710,38 +1790,47 @@ function pkSit() {
   pkStartHand();
 }
 async function pkStartHand() {
-  if (PK.phase !== 'between') return;
+  if (PK.phase !== 'between' || mpPkGuest()) return;
   clearTimeout(PK.autoT);
-  const gen = PK.gen, me = PK.seats[0], N = PK.seats.length;
-  if (me.stack <= 0) { pkRender(true); pkBust(); return; }
-  for (let i = 1; i < N; i++) {
-    if (PK.seats[i].stack <= 0) {
-      const gone = PK.seats[i].name, nb = pkNewBot();
+  const gen = PK.gen, me = PK.seats[0], mp = mpPkHostOn();
+  if (!mp && me.stack <= 0) { pkRender(true); pkBust(); return; }
+  if (mp) mpPkSeatChanges();
+  for (let i = 1; i < PK.seats.length; i++) {
+    const s = PK.seats[i];
+    if (!s.remote && s.stack <= 0) {
+      const gone = s.name, nb = pkNewBot();
       PK.seats[i] = nb;
       pkLog(`${esc(gone)} quitte la table. ${esc(nb.name)} s'assoit avec ${money(nb.stack)}.`);
     }
   }
-  PK.handNo++; PK.h.hands++; PK.flags = {};
-  PK.seen = new Set(); PK.flip = new Set(); PK.best = null;
-  for (const s of PK.seats) Object.assign(s, { cards: [], bet: 0, total: 0, folded: false, allIn: false, acted: false, last: '', pf: 'none', win: 0, shown: false, hn: '', eq: null });
+  for (const s of PK.seats) { Object.assign(s, pkBlank()); if (s.stack <= 0) { s.out = true; s.folded = true; s.last = 'Absent'; } }
+  const N = PK.seats.length, live = PK.seats.filter(s => !s.out);
+  if (live.length < 2) { PK.waiting = true; pkRender(true); return; }
+  PK.waiting = false;
+  PK.handNo++; if (!me.out) PK.h.hands++; PK.flags = {};
+  PK.seen = new Set(); PK.flip = new Set(); PK.best = null; PK.waitRemote = -1; PK.deadline = 0;
   S.poker.stack = me.stack; save();
   PK.chipsAtStart = PK.seats.reduce((a, s) => a + s.stack, 0);
-  PK.button = (PK.button + 1) % N;
+  const nextLive = i => { let j = i; do { j = (j + 1) % N; } while (PK.seats[j].out); return j; };
+  PK.button = nextLive(PK.button % N);
   PK.board = []; PK.deck = shuffle([...Array(52).keys()]);
   PK.street = 'preflop'; PK.phase = 'hand'; PK.raises = 0; PK.aggressor = -1; PK.pfAggressor = -1; PK.waitHuman = false; PK.pre = null; PK.runout = false;
-  PK.sbI = N === 2 ? PK.button : (PK.button + 1) % N;
-  PK.bbI = (PK.sbI + 1) % N;
+  PK.sbI = live.length === 2 ? PK.button : nextLive(PK.button);
+  PK.bbI = nextLive(PK.sbI);
   pkLog(`Main n° ${PK.handNo}`, 'h');
   pkPost(PK.sbI, PK.cfg.sb, 'la petite blinde', 'PB');
   pkPost(PK.bbI, PK.cfg.bb, 'la grosse blinde', 'GB');
   PK.curBet = PK.cfg.bb; PK.lastRaise = PK.cfg.bb;
   pkRender(true);
-  for (let round = 0; round < 2; round++) for (let k = 1; k <= N; k++) {
-    const i = (PK.button + k) % N;
-    PK.seats[i].cards.push(PK.deck.pop()); Snd.card(); pkRender(); await wait(95);
-    if (gen !== PK.gen) return;
+  for (let round = 0; round < 2; round++) {
+    let i = PK.button;
+    for (let k = 0; k < live.length; k++) {
+      i = nextLive(i);
+      PK.seats[i].cards.push(PK.deck.pop()); Snd.card(); pkRender(); await wait(95);
+      if (gen !== PK.gen) return;
+    }
   }
-  PK.toAct = (PK.bbI + 1) % N;
+  PK.toAct = nextLive(PK.bbI);
   pkLoop();
 }
 function pkPost(i, amt, label, short) {
@@ -1772,7 +1861,24 @@ function pkLoop() {
       return;
     }
     if (pre === 'ck') PK.pre = null;
-    PK.waitHuman = true; pkDefaultRaise(); pkRender(); return;
+    PK.waitHuman = true; pkDefaultRaise();
+    if (mpPkHostOn()) {
+      PK.deadline = Date.now() + 40000; clearTimeout(PK.botT);
+      PK.botT = setTimeout(() => { if (gen === PK.gen && PK.phase === 'hand' && PK.toAct === i && PK.waitHuman) { pkLog(`${esc(s.name)} n'a pas joué à temps.`); pkApply(i, PK.curBet - s.bet > 0 ? 'fold' : 'check'); } }, 40000);
+    }
+    pkRender(); return;
+  }
+  if (s.remote) {
+    PK.waitHuman = false; PK.waitRemote = i;
+    PK.deadline = Date.now() + (mpOnlinePid(s.remote) ? 40000 : 3000);
+    pkRender();
+    clearTimeout(PK.botT);
+    PK.botT = setTimeout(() => {
+      if (gen !== PK.gen || PK.phase !== 'hand' || PK.toAct !== i || PK.waitRemote !== i) return;
+      pkLog(`${esc(s.name)} n'a pas joué à temps.`);
+      pkApply(i, PK.curBet - s.bet > 0 ? 'fold' : 'check');
+    }, PK.deadline - Date.now());
+    return;
   }
   PK.waitHuman = false; pkRender();
   const base = 600 + Math.random() * 900;
@@ -1787,6 +1893,8 @@ function pkLoop() {
 }
 function pkApply(i, type, to) {
   const s = PK.seats[i], N = PK.seats.length;
+  if (PK.waitRemote === i) PK.waitRemote = -1;
+  PK.deadline = 0; clearTimeout(PK.botT);
   const toCall = PK.curBet - s.bet;
   if (type === 'check' && toCall > 0) type = 'call';
   if (s.human) pkTrackHuman(type, toCall);
@@ -1971,14 +2079,13 @@ async function pkFinish() {
   PK.phase = 'between';
   const after = PK.seats.reduce((a, s) => a + s.stack, 0);
   if (after !== PK.chipsAtStart) console.error('Écart de jetons', PK.chipsAtStart, after);
-  const handNet = me.win - me.total;
-  S.stats.po.n++; S.stats.po.net = round2(S.stats.po.net + handNet);
-  recordBest(handNet);
+  if (!me.out) { const handNet = me.win - me.total; S.stats.po.n++; S.stats.po.net = round2(S.stats.po.net + handNet); recordBest(handNet); }
   S.poker.stack = me.stack; save(); renderWallet();
   if (me.win > 0) Snd.win();
   pkRender(true);
-  if (me.stack <= 0) { setTimeout(() => { if (gen === PK.gen && PK.phase === 'between') pkBust(); }, 1200); return; }
-  if (S.settings.pk.auto) PK.autoT = setTimeout(() => { if (gen === PK.gen && PK.phase === 'between' && !modalOpen()) pkStartHand(); }, 3800 * speedK());
+  const mp = mpPkHostOn();
+  if (me.stack <= 0 && !mp) { setTimeout(() => { if (gen === PK.gen && PK.phase === 'between') pkBust(); }, 1200); return; }
+  if (S.settings.pk.auto || mp) PK.autoT = setTimeout(() => { if (gen === PK.gen && PK.phase === 'between' && (mp || !modalOpen())) pkStartHand(); }, (mp ? 4200 : 3800) * speedK());
 }
 // Le net d'une main est déjà compté dans les stats ; ici on ne fait que rendre les jetons au portefeuille.
 function pkCashOut() {
@@ -1992,6 +2099,7 @@ function pkCashOut() {
   toast(`Tu quittes la table avec ${money(out)} (${money(net, true)}).`);
 }
 function pkLeave() {
+  if (MP.role && MP.game === 'poker') { mpLeaveAsk(); return; }
   const me = PK.seats[0];
   if (PK.phase === 'hand' && !me.folded) {
     confirmBox('Quitter la table ?', 'Tu as une main en cours : elle sera couchée et ce que tu as déjà misé reste dans le pot.', 'Me coucher et partir', () => {
@@ -2004,6 +2112,7 @@ function pkLeave() {
   pkCashOut();
 }
 function pkRebuyBox(fromBust) {
+  if (mpPkGuest()) { mpPkRebuyBox(); return; }
   const me = PK.seats[0], bb = PK.cfg.bb, maxStack = bb * 100;
   const room = Math.min(maxStack - me.stack, Math.floor(S.balance / bb) * bb);
   if (room < bb * 10 && fromBust) {
@@ -2021,9 +2130,10 @@ function pkRebuyBox(fromBust) {
       const v = +$('#rb-amt', m).value;
       if (!debit(v)) { lowFunds(); return; }
       me.stack += v; PK.buyins += v; S.poker.stack = me.stack; S.poker.buyins = PK.buyins;
+      if (PK.phase === 'hand') PK.chipsAtStart += v;
       pkLog(`Tu recaves ${money(v)}.`);
       save(); renderWallet(); c(); pkRender(true);
-      if (fromBust && S.settings.pk.auto) setTimeout(() => pkStartHand(), 500);
+      if ((fromBust && S.settings.pk.auto) || PK.waiting) setTimeout(() => pkStartHand(), 500);
     } }],
     onMount(m) { const r = $('#rb-amt', m); r.oninput = () => { $('#rb-out', m).textContent = money(+r.value); }; }
   });
@@ -2204,23 +2314,26 @@ function pkRenderSetup() {
   if (rng) rng.oninput = () => { PK.setupBuy = +rng.value; $('#pk-buy-out').textContent = money(PK.setupBuy); rng.closest('.field').querySelector('.fine').textContent = `Prise sur ton solde, rendue quand tu quittes la table. ${Math.round(PK.setupBuy / bb)} grosses blindes.`; };
 }
 function pkRender(force) {
+  if (mpPkHostOn()) mpPkBroadcast();
   if (!S || VIEW !== 'poker') return;
-  const setup = PK.phase === 'setup';
+  $('#pk-sub').textContent = MP.role && MP.game === 'poker' ? 'Texas Hold\'em sans limite, entre amis' : 'Texas Hold\'em sans limite, contre des joueurs fictifs';
+  const guestWait = mpPkGuest() && (!S.poker || MP.pkWaiting || !PK.seats.length);
+  const setup = PK.phase === 'setup' || guestWait;
   $('#pk-setup').hidden = !setup; $('#pk-game').hidden = setup;
-  if (setup) { pkRenderSetup(); return; }
+  if (setup) { if (mpPkGuest()) mpPkSitPanel(); else pkRenderSetup(); return; }
   const wrap = $('#pk-table'), N = PK.seats.length;
   const best = PK.best;
   let html = '<div class="pk-felt felt rail"><div class="felt-logo">Cercle 37</div></div>';
   PK.seats.forEach((s, i) => {
     const { x, y } = pkSeatXY(i);
     const show = s.human || s.shown;
-    const cards = (!s.human && s.folded) ? '' : s.cards.map(c => cardHTML(c >> 2, c & 3, { id: `${PK.handNo}-${c}`, down: !show, seen: PK.seen, flip: PK.flip, cls: best && s.win > 0 ? (best.has(c) ? 'hi' : 'dim') : '' })).join('');
+    const cards = (!s.human && s.folded) ? '' : s.cards.map((c, k) => cardHTML(Math.max(0, c) >> 2, Math.max(0, c) & 3, { id: `${PK.handNo}-${i}-${k}`, down: !show || c < 0, seen: PK.seen, flip: PK.flip, cls: best && s.win > 0 ? (best.has(c) ? 'hi' : 'dim') : '' })).join('');
     const active = PK.phase === 'hand' && PK.toAct === i && !s.folded && !s.allIn && (s.human ? PK.waitHuman : true);
-    const cls = ['seat', s.human ? 'me' : 'bot', active ? 'active' : '', s.folded ? 'folded' : '', s.win > 0 && PK.phase === 'between' ? 'winner' : '', s.shown && !s.human ? 'shown' : ''].join(' ');
+    const cls = ['seat', s.human ? 'me' : 'bot', active ? 'active' : '', s.folded || s.out ? 'folded' : '', s.win > 0 && PK.phase === 'between' ? 'winner' : '', s.shown && !s.human ? 'shown' : ''].join(' ');
     html += `<div class="${cls}" style="left:${x}%;top:${y}%;--c:${s.color}">
       <div class="seat-cards">${cards}</div>
       <div class="plate"><span class="avatar">${esc(initials(s.name))}</span><span class="pl-txt"><span class="pl-name">${esc(s.name)}</span><span class="pl-stack">${s.allIn && PK.phase === 'hand' ? 'Tapis' : money(s.stack)}</span></span></div>
-      ${s.win > 0 && PK.phase === 'between' ? `<span class="s-win">+${money(s.win)}</span>` : s.hn && s.shown ? `<span class="s-hn">${esc(s.hn)}</span>` : s.eq != null && s.shown && PK.phase === 'hand' ? `<span class="s-eq" title="Chances de gagner la main">${Math.round(s.eq * 100)} %</span>` : s.last ? `<span class="s-act${s.last === 'Tapis' ? ' allin' : ''}">${esc(s.last)}</span>` : ''}
+      ${s.win > 0 && PK.phase === 'between' ? `<span class="s-win">+${money(s.win)}</span>` : s.hn && s.shown ? `<span class="s-hn">${esc(s.hn)}</span>` : s.eq != null && s.shown && PK.phase === 'hand' ? `<span class="s-eq" title="Chances de gagner la main">${Math.round(s.eq * 100)} %</span>` : s.last ? `<span class="s-act${s.last === 'Tapis' ? ' allin' : ''}">${esc(s.last)}</span>` : ''}${active && PK.deadline && (s.remote || (s.human && MP.role)) ? mpTimerHTML(PK.deadline) : ''}
     </div>`;
     if (s.bet > 0) { const bx = x + (50 - x) * .42, by = y + (50 - y) * .42; html += `<div class="pk-bet" style="left:${bx}%;top:${by}%">${chipHTML(chipsFor(s.bet, 1)[0], false)}<span>${money(s.bet)}</span></div>`; }
     if (i === PK.button) {
@@ -2236,22 +2349,31 @@ function pkRender(force) {
   wrap.innerHTML = html;
   // fil de la main
   const me = PK.seats[0];
-  $('#pk-meta').innerHTML = `<span>Table ${PK.cfg.sb}/${PK.cfg.bb} · ${PK_LEVELS[PK.cfg.level].name} · ${N - 1} adversaire${N > 2 ? 's' : ''}</span><span>Devant toi : <b>${money(me.stack)}</b> · résultat de la table : <b class="${me.stack + (PK.phase === 'hand' ? me.total : 0) - PK.buyins >= 0 ? 'pos' : 'neg'}">${money(me.stack + (PK.phase === 'hand' ? me.total : 0) - PK.buyins, true)}</b></span>`;
+  $('#pk-meta').innerHTML = `<span>${MP.role && MP.game === 'poker' ? `Table entre amis · ${PK.cfg.sb}/${PK.cfg.bb} · ${N} joueurs` : `Table ${PK.cfg.sb}/${PK.cfg.bb} · ${PK_LEVELS[PK.cfg.level].name} · ${N - 1} adversaire${N > 2 ? 's' : ''}`}</span><span>Devant toi : <b>${money(me.stack)}</b> · résultat de la table : <b class="${me.stack + (PK.phase === 'hand' ? me.total : 0) - PK.buyins >= 0 ? 'pos' : 'neg'}">${money(me.stack + (PK.phase === 'hand' ? me.total : 0) - PK.buyins, true)}</b></span>`;
   const log = $('#pk-log');
   const nearBottom = log.scrollHeight - log.scrollTop - log.clientHeight < 40;
   log.innerHTML = PK.log.slice(-80).map(l => `<li class="${l.cls}">${l.html}</li>`).join('');
   if (nearBottom || force) log.scrollTop = log.scrollHeight;
-  $('#pk-head').innerHTML = `<button type="button" class="btn small" id="pk-help" aria-pressed="${!!S.settings.pk.help}" title="Affiche tes chances de gagner et la cote du pot">Aide</button><button type="button" class="btn small" id="pk-rebuy"${PK.phase === 'hand' ? ' disabled' : ''}>Recaver</button><button type="button" class="btn small danger" id="pk-leave">Quitter la table</button>`;
+  $('#pk-head').innerHTML = `<button type="button" class="btn small" id="pk-help" aria-pressed="${!!S.settings.pk.help}" title="Affiche tes chances de gagner et la cote du pot">Aide</button><button type="button" class="btn small" id="pk-rebuy"${PK.phase === 'hand' && !me.out ? ' disabled' : ''}>Recaver</button>${MP.role && MP.game === 'poker' ? '<button type="button" class="btn small" id="pk-invite">Inviter</button>' : ''}<button type="button" class="btn small danger" id="pk-leave">${mpPkHostOn() ? 'Fermer la table' : 'Quitter la table'}</button>`;
   pkTray(force);
 }
 function pkTray(force) {
   const me = PK.seats[0], el = $('#pk-tray');
-  const key = [PK.phase, PK.handNo, PK.street, PK.toAct, PK.curBet, PK.waitHuman, me.stack, me.folded, S.settings.pk.auto, PK.pre, S.settings.pk.help].join('|');
+  const key = [PK.phase, PK.handNo, PK.street, PK.toAct, PK.curBet, PK.waitHuman, me.stack, me.folded, S.settings.pk.auto, PK.pre, S.settings.pk.help, PK.waiting, me.out, MP.role].join('|');
   if (!force && key === PK.trayKey) return;
   PK.trayKey = key;
+  const mp = !!(MP.role && MP.game === 'poker');
+  if (mp && (me.out || (me.stack <= 0 && PK.phase !== 'hand'))) {
+    el.innerHTML = `<div class="pk-info"><b>Tu n'as plus de jetons.</b><span>Recave pour revenir à la prochaine main, ou quitte la table.</span></div><div class="tray-btns"><button type="button" class="btn primary big" data-pk="rebuy">Recaver</button></div>`;
+    return;
+  }
   if (PK.phase === 'between') {
     const w = PK.seats.filter(s => s.win > 0);
     const txt = !PK.handNo ? 'Prêt pour la première main.' : me.win > 0 ? `Tu remportes ${money(me.win)}${me.hn ? ` avec ${me.hn.charAt(0).toLowerCase() + me.hn.slice(1)}` : ''}.` : w.length ? `${w.map(s => esc(s.name)).join(' et ')} ${w.length > 1 ? 'partagent' : 'remporte'} le pot${w[0].hn ? ` avec ${w[0].hn.charAt(0).toLowerCase() + w[0].hn.slice(1)}` : ''}.` : '';
+    if (mp) {
+      el.innerHTML = `<div class="pk-info"><b>${PK.waiting ? 'En attente d\'un autre joueur…' : txt || 'La partie va commencer.'}</b><span>${PK.waiting ? 'La main démarre dès qu\'un deuxième joueur est assis.' : 'La main suivante démarre toute seule.'}</span></div>${mpIsHost() ? `<div class="tray-btns">${PK.waiting ? '<button type="button" class="btn primary" data-mpinv="1">Inviter des amis</button>' : '<button type="button" class="btn" data-pk="next">Main suivante <kbd>Entrée</kbd></button>'}</div>` : ''}`;
+      return;
+    }
     el.innerHTML = `<div class="pk-info"><b>${txt}</b><span>${me.stack > 0 ? (S.settings.pk.auto ? 'La main suivante démarre toute seule.' : 'Lance la main suivante quand tu veux.') : 'Tu n\'as plus de jetons.'}</span></div>
       <div class="tray-btns"><label class="switch"><input type="checkbox" id="pk-auto"${S.settings.pk.auto ? ' checked' : ''}> Enchaîner</label>${me.stack > 0 ? '<button type="button" class="btn primary big" data-pk="next">Main suivante <kbd>Entrée</kbd></button>' : '<button type="button" class="btn primary big" data-pk="rebuy">Recaver</button>'}</div>`;
     return;
@@ -2306,6 +2428,7 @@ $('#pk-tray').addEventListener('click', e => {
   const b = e.target.closest('button');
   if (e.target.id === 'pk-auto') { S.settings.pk.auto = e.target.checked; save(); if (S.settings.pk.auto && PK.phase === 'between' && PK.seats[0].stack > 0) PK.autoT = setTimeout(() => { if (PK.phase === 'between' && !modalOpen()) pkStartHand(); }, 1200); else clearTimeout(PK.autoT); return; }
   if (b && b.dataset.pre) { PK.pre = PK.pre === b.dataset.pre ? null : b.dataset.pre; pkTray(true); return; }
+  if (b && b.dataset.mpinv) { mpInvite(false); return; }
   if (!b || b.disabled) return;
   const me = PK.seats[0];
   if (b.dataset.size) {
@@ -2317,16 +2440,1056 @@ $('#pk-tray').addEventListener('click', e => {
   const a = b.dataset.pk;
   if (a === 'next') { clearTimeout(PK.autoT); pkStartHand(); return; }
   if (a === 'rebuy') { pkRebuyBox(me.stack <= 0); return; }
-  if (!PK.waitHuman || PK.phase !== 'hand' || PK.toAct !== 0) return;
-  if (a === 'fold') pkApply(0, 'fold');
-  else if (a === 'call') pkApply(0, PK.curBet - me.bet > 0 ? 'call' : 'check');
-  else if (a === 'raise') pkApply(0, 'raise', PK.raiseTo);
+  if (a === 'fold') pkHumanAct('fold');
+  else if (a === 'call') pkHumanAct(PK.curBet - me.bet > 0 ? 'call' : 'check');
+  else if (a === 'raise') pkHumanAct('raise', PK.raiseTo);
 });
 $('#pk-head').addEventListener('click', e => {
   if (e.target.closest('#pk-leave')) pkLeave();
-  else if (e.target.closest('#pk-rebuy')) { if (PK.phase !== 'hand') pkRebuyBox(false); }
+  else if (e.target.closest('#pk-invite')) mpInvite(false);
+  else if (e.target.closest('#pk-rebuy')) { if (PK.phase !== 'hand' || (PK.seats[0] && PK.seats[0].out)) pkRebuyBox(false); }
   else if (e.target.closest('#pk-help')) { S.settings.pk.help = !S.settings.pk.help; save(); pkRender(true); }
 });
+
+/* ================= jeu entre amis ================= */
+// Relais temps réel : un serveur MQTT public. Chaque message est chiffré (AES-GCM) avec une clé tirée du code
+// de la table : le relais ne voit rien. Le navigateur de l'hôte fait foi : il distribue, lance la bille et tient la table.
+const MP_PROTO = 1;
+const MP_BROKERS = ['wss://broker.emqx.io:8084/mqtt', 'wss://broker.hivemq.com:8884/mqtt', 'wss://test.mosquitto.org:8081/mqtt'];
+const MP_LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
+const MP_OK = !!(window.crypto && crypto.subtle) && (/\.github\.io$/.test(location.hostname) || MP_LOCAL);
+const MP_GAMES = { poker: { name: 'Poker', max: 6 }, roulette: { name: 'Roulette', max: 8 }, blackjack: { name: 'Blackjack', max: 5 } };
+const MP_COLORS = ['#C27C2C', '#3E7CB1', '#B5495B', '#6B8F3A', '#8A5BB0', '#2E8C88', '#A0522D', '#5468A8'];
+const CODE_ABC = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+function mpPid() {
+  try {
+    let id = sessionStorage.getItem('cercle37.pid');
+    if (!id) { id = 'p' + Array.from({ length: 10 }, () => CODE_ABC[rngInt(CODE_ABC.length)]).join('').toLowerCase(); sessionStorage.setItem('cercle37.pid', id); }
+    return id;
+  } catch (e) { return 'p' + rngInt(1e9); }
+}
+const MP = {
+  role: null, code: '', game: null, client: null, key: null, topic: '', me: { id: mpPid() }, hostId: null, hostName: '', players: [],
+  status: 'off', lastHost: 0, hbT: 0, joinT: 0, rx: Promise.resolve(), tx: Promise.resolve(), soon: {}, pendingJoin: null, gen: 0,
+  ro: null, roReady: false, roSent: '', pk: null, pkInfo: null, pkSeq: 0, pkHand: 0, pkCounted: 0, pkStreet: '', pkWaiting: false,
+  bj: null, bjv: null, bjLocal: 0, bjPaid: 0, bjBusy: false
+};
+const mpIsHost = () => MP.role === 'host';
+const mpIs = g => (MP.role === 'host' || MP.role === 'guest') && MP.game === g;
+const mpPkHostOn = () => MP.role === 'host' && MP.game === 'poker';
+const mpPkGuest = () => MP.role === 'guest' && MP.game === 'poker';
+const mpOnlinePid = pid => { const p = MP.players.find(x => x.id === pid); return !!(p && p.on); };
+function mpSoon(key, fn, ms = 100) {
+  MP.soon[key] = fn;
+  if (MP.soon[key + 'T']) return;
+  MP.soon[key + 'T'] = setTimeout(() => { const f = MP.soon[key]; MP.soon[key + 'T'] = 0; MP.soon[key] = null; if (f) f(); }, ms);
+}
+function mpTimerHTML(dl) { return dl ? `<span class="s-timer"><i style="--d:${Math.max(0, dl - Date.now())}ms"></i></span>` : ''; }
+
+// --- transport ---
+function mpLoadLib() {
+  if (window.mqtt) return Promise.resolve();
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'mqtt.min.js';
+    s.onload = () => window.mqtt ? res() : rej(new Error('lib'));
+    s.onerror = () => rej(new Error('lib'));
+    document.head.appendChild(s);
+  });
+}
+function mpBrokerUrl(i) {
+  if (MP_LOCAL) { try { const o = localStorage.getItem('cercle37.broker'); if (o) return o; } catch (e) { /* rien */ } }
+  return MP_BROKERS[i];
+}
+function b64(u8) { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); }
+function unb64(s) { const bin = atob(s), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; }
+async function mpKeys(code) {
+  const te = new TextEncoder();
+  const t = new Uint8Array(await crypto.subtle.digest('SHA-256', te.encode('cercle37/t/' + code)));
+  const k = await crypto.subtle.digest('SHA-256', te.encode('cercle37/k/' + code));
+  MP.topic = 'c37v1/' + [...t.slice(0, 12)].map(b => b.toString(16).padStart(2, '0')).join('');
+  MP.key = await crypto.subtle.importKey('raw', k, 'AES-GCM', false, ['encrypt', 'decrypt']);
+}
+function mpConnect(i) {
+  return new Promise((res, rej) => {
+    let done = false;
+    const c = mqtt.connect(mpBrokerUrl(i), { clientId: 'c37_' + MP.me.id + '_' + rngInt(1e6), clean: true, keepalive: 30, reconnectPeriod: 2500, connectTimeout: 8000 });
+    const fail = () => { if (done) return; done = true; clearTimeout(t); try { c.end(true); } catch (e) { /* rien */ } rej(new Error('broker')); };
+    const t = setTimeout(fail, 9000);
+    c.on('connect', () => { if (!done) { done = true; clearTimeout(t); res(c); } else if (c === MP.client && MP.role) mpSetStatus(MP.role === 'joining' ? 'connecting' : 'on'); });
+    c.on('error', () => { if (!done) fail(); });
+    c.on('offline', () => { if (done && c === MP.client && MP.role) mpSetStatus('lost'); });
+  });
+}
+function mpTopic(ch) { return ch === 'h' ? MP.topic + '/h' : ch === 'a' ? MP.topic + '/a' : MP.topic + '/p/' + ch.slice(2); }
+function mpSubscribe(chs) { return new Promise((res, rej) => MP.client.subscribe(chs.map(mpTopic), { qos: 1 }, e => e ? rej(e) : res())); }
+function mpSend(ch, obj) {
+  if (!MP.client || !MP.key) return;
+  obj.f = MP.me.id;
+  const client = MP.client, key = MP.key, topic = mpTopic(ch), body = JSON.stringify(obj);
+  MP.tx = MP.tx.then(async () => {
+    try {
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const ct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(body)));
+      const buf = new Uint8Array(12 + ct.length); buf.set(iv); buf.set(ct, 12);
+      client.publish(topic, b64(buf), { qos: 1 });
+    } catch (e) { console.warn('envoi impossible', e); }
+  });
+}
+function mpListen(client) {
+  client.on('message', (topic, payload) => {
+    const txt = payload.toString();
+    MP.rx = MP.rx.then(async () => {
+      if (client !== MP.client || !MP.key) return;
+      let m;
+      try { const u = unb64(txt); m = JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: u.slice(0, 12) }, MP.key, u.slice(12)))); }
+      catch (e) { return; }
+      if (!m || typeof m !== 'object' || m.f === MP.me.id) return;
+      try { if (MP.role === 'host') mpHostRecv(m); else if (MP.role) mpGuestRecv(m); } catch (e) { console.error(e); }
+    });
+  });
+}
+let wakeLock = null;
+async function mpWake() {
+  try { if (MP.role && navigator.wakeLock && !wakeLock && !document.hidden) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); } }
+  catch (e) { /* refusé : sans gravité */ }
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden && MP.role) { mpWake(); if (mpIsHost()) mpBroadcastRoom(); } });
+function mpSetStatus(s) { if (MP.status === s) return; MP.status = s; mpRenderBar(); }
+
+// --- créer, rejoindre, quitter ---
+function mpFail(msg) { modal({ title: 'Jeu entre amis', body: `<p>${esc(msg)}</p>`, actions: [{ label: 'OK', kind: 'primary' }] }); }
+function mpFreeFor(game) {
+  if (game === 'poker' && PK.phase !== 'setup') { toast('Quitte d\'abord ta table de poker en solo.'); return false; }
+  if (game === 'blackjack' && (BJ.busy || BJ.phase !== 'bet')) { toast('Termine d\'abord ta main de blackjack.'); return false; }
+  if (game === 'roulette' && RO.spinning) { toast('Attends la fin du tour de roulette.'); return false; }
+  return true;
+}
+async function mpCreate(game, opts) {
+  if (MP.role) { toast('Tu es déjà à une table entre amis.'); return; }
+  if (!mpFreeFor(game)) return;
+  const busy = modal({ title: 'Création de la table…', body: '<p class="fine">Connexion au service de mise en relation.</p>', dismiss: false });
+  let client = null, b = 0;
+  try {
+    await mpLoadLib();
+    for (; b < MP_BROKERS.length; b++) { try { client = await mpConnect(b); break; } catch (e) { /* relais suivant */ } }
+  } catch (e) { /* bibliothèque introuvable */ }
+  busy();
+  if (!client) { mpFail('Impossible de joindre le service de mise en relation. Vérifie ta connexion et réessaie.'); return; }
+  const code = Array.from({ length: 6 }, () => CODE_ABC[rngInt(CODE_ABC.length)]).join('') + b;
+  MP.client = client;
+  await mpKeys(code);
+  Object.assign(MP, { code, role: 'host', game, hostId: MP.me.id, hostName: S.pseudo, players: [{ id: MP.me.id, name: S.pseudo, color: MP_COLORS[0], on: true, seen: Date.now() }] });
+  MP.gen++;
+  mpListen(client);
+  try { await mpSubscribe(['h']); } catch (e) { mpReset(); mpFail('Le service de mise en relation ne répond pas. Réessaie dans un instant.'); return; }
+  MP.status = 'on';
+  mpStartHeartbeat();
+  if (game === 'roulette') mpRoInit();
+  else if (game === 'poker') { if (!mpPkHostStart(opts)) { mpReset(); return; } }
+  else bjmInit(opts);
+  mpBroadcastRoom();
+  show(game); mpRenderBar(); mpInvite(true); mpWake();
+  if (game === 'poker') pkStartHand();
+}
+async function mpJoin(code) {
+  code = String(code || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!/^[A-Z2-9]{6}[0-9]$/.test(code) || +code[6] >= MP_BROKERS.length) { mpFail('Ce code de table n\'est pas valide.'); return; }
+  if (!MP_OK) { mpFail(`Le jeu entre amis fonctionne sur le site public : ${SITE_URL}`); return; }
+  if (MP.role) { if (MP.code === code) { show(MP.game || VIEW); return; } toast('Quitte d\'abord ta table actuelle.'); return; }
+  if (PK.phase !== 'setup') {
+    confirmBox('Rejoindre la table de tes amis ?', 'Tu es assis à une table de poker en solo : tu la quittes et tes jetons reviennent sur ton solde.', 'Quitter et rejoindre', () => {
+      const me = PK.seats[0];
+      if (PK.phase === 'hand' && me && me.cards.length && !me.folded) { S.stats.po.n++; S.stats.po.net = round2(S.stats.po.net + (me.win || 0) - me.total); }
+      pkCashOut(); mpJoin(code);
+    });
+    return;
+  }
+  if (BJ.busy || BJ.phase !== 'bet' || RO.spinning) { toast('Termine ta partie en cours, puis rouvre le lien de la table.'); return; }
+  Object.assign(MP, { role: 'joining', code, status: 'connecting', hostId: null, players: [] });
+  MP.gen++;
+  const gen = MP.gen;
+  mpRenderBar();
+  try { await mpLoadLib(); MP.client = await mpConnect(+code[6]); }
+  catch (e) { if (gen === MP.gen) { mpReset(); mpFail('Impossible de joindre la table. Vérifie ta connexion et réessaie.'); } return; }
+  if (gen !== MP.gen) { try { MP.client.end(true); } catch (e) { /* rien */ } return; }
+  await mpKeys(code);
+  mpListen(MP.client);
+  try { await mpSubscribe(['a', 'p:' + MP.me.id]); } catch (e) { mpReset(); mpFail('Le service de mise en relation ne répond pas. Réessaie dans un instant.'); return; }
+  const hello = () => mpSend('h', { k: 'hello', name: S.pseudo, proto: MP_PROTO, seated: !!(S.poker && S.poker.mp) });
+  hello();
+  let tries = 0;
+  MP.joinT = setInterval(() => {
+    if (MP.role !== 'joining') { clearInterval(MP.joinT); return; }
+    if (++tries > 7) { clearInterval(MP.joinT); mpReset(); mpFail('Table introuvable : l\'hôte l\'a peut-être fermée, ou le code est faux.'); return; }
+    hello();
+  }, 1500);
+}
+function mpStartHeartbeat() {
+  clearInterval(MP.hbT);
+  MP.lastHost = Date.now();
+  MP.hbT = setInterval(() => {
+    if (!MP.role) return;
+    const now = Date.now();
+    if (MP.role === 'host') {
+      let changed = false;
+      for (const p of [...MP.players]) {
+        if (p.id === MP.me.id) continue;
+        if (p.on && now - p.seen > 15000) { p.on = false; changed = true; toast(`${p.name} ne répond plus.`); }
+        if (!p.on && now - p.seen > 120000) { mpDropPlayer(p, 'a quitté la table (connexion perdue)'); changed = true; }
+      }
+      mpBroadcastRoom();
+      if (changed) { mpRenderBar(); mpGameRefresh(); }
+    } else if (MP.role === 'guest') {
+      mpSend('h', { k: 'ping' });
+      if (now - MP.lastHost > 15000) mpSetStatus('lost');
+      if (now - MP.lastHost > 180000) mpEnd('Connexion perdue avec la table : l\'hôte ne répond plus.', false);
+    }
+  }, 4000);
+}
+function mpBroadcastRoom() {
+  mpSend('a', { k: 'room', game: MP.game, hostName: S.pseudo, players: MP.players.map(({ id, name, color, on }) => ({ id, name, color, on })), bjTable: MP.bj ? MP.bj.table : null });
+}
+function mpColor() { const used = new Set(MP.players.map(p => p.color)); return MP_COLORS.find(c => !used.has(c)) || MP_COLORS[MP.players.length % MP_COLORS.length]; }
+function mpHostRecv(m) {
+  const pid = String(m.f || '');
+  if (!pid) return;
+  let p = MP.players.find(x => x.id === pid);
+  if (m.k === 'hello') {
+    if (!p) {
+      if (MP.players.length >= MP_GAMES[MP.game].max) { mpSend('p:' + pid, { k: 'full' }); return; }
+      p = { id: pid, name: cleanName(m.name) || 'Invité', color: mpColor(), on: true, seen: Date.now() };
+      MP.players.push(p);
+      toast(`${p.name} a rejoint la table.`); Snd.chip();
+    } else { p.on = true; p.seen = Date.now(); p.name = cleanName(m.name) || p.name; }
+    mpBroadcastRoom(); mpRenderBar();
+    mpGameHello(p, m);
+    return;
+  }
+  if (!p) { mpSend('p:' + pid, { k: 'gone' }); return; }
+  p.seen = Date.now();
+  if (!p.on) { p.on = true; mpBroadcastRoom(); mpRenderBar(); mpGameRefresh(); }
+  if (m.k === 'ping') return;
+  if (m.k === 'bye') { mpDropPlayer(p, 'a quitté la table'); return; }
+  if (MP.game === 'roulette') mpRoMsg(p, m);
+  else if (MP.game === 'poker') mpPkMsg(p, m);
+  else if (MP.game === 'blackjack') bjmMsg(p, m);
+}
+function mpGameHello(p, m) {
+  if (MP.game === 'roulette') mpRoBroadcast();
+  else if (MP.game === 'poker') {
+    const i = PK.seats.findIndex(s => s.remote === p.id);
+    if (i >= 0 && !m.seated) mpPkRemove(p.id);
+    mpPkInfo();
+    if (i >= 0 && m.seated) mpPkBroadcast();
+  } else if (MP.game === 'blackjack') { bjmSyncSeats(); bjmBroadcast(); }
+}
+function mpGameRefresh() {
+  if (MP.game === 'roulette') mpRoBroadcast();
+  else if (MP.game === 'blackjack' && mpIsHost()) bjmMaybeDeal();
+}
+function mpDropPlayer(p, why) {
+  MP.players = MP.players.filter(x => x !== p);
+  toast(`${p.name} ${why}.`);
+  if (MP.game === 'roulette' && MP.ro) { delete MP.ro.bets[p.id]; delete MP.ro.ready[p.id]; mpRoBroadcast(); mpRoMaybeSpin(); }
+  else if (MP.game === 'poker') mpPkRemove(p.id);
+  else if (MP.game === 'blackjack') bjmRemove(p.id);
+  mpBroadcastRoom(); mpRenderBar();
+}
+function mpGuestRecv(m) {
+  if (MP.hostId && m.f !== MP.hostId) return;
+  if (!MP.hostId && m.k !== 'room' && m.k !== 'full') return;
+  MP.lastHost = Date.now();
+  if (MP.role === 'guest' && MP.status !== 'on') mpSetStatus('on');
+  switch (m.k) {
+    case 'room': {
+      if (!MP_GAMES[m.game]) return;
+      const first = MP.role === 'joining';
+      if (first) { MP.role = 'guest'; MP.hostId = m.f; MP.game = m.game; clearInterval(MP.joinT); MP.status = 'on'; mpStartHeartbeat(); }
+      MP.hostName = cleanName(m.hostName) || 'l\'hôte';
+      if (Array.isArray(m.players)) MP.players = m.players.slice(0, 10).map(p => ({ id: String(p.id), name: cleanName(p.name) || 'Joueur', color: /^#[0-9A-Fa-f]{6}$/.test(p.color) ? p.color : '#888888', on: !!p.on }));
+      mpRenderBar();
+      if (first) { toast(`Tu as rejoint la table de ${MP.hostName}.`); show(MP.game); mpWake(); }
+      else if (MP.game === 'roulette' && VIEW === 'roulette') { roRenderPanel(); roRenderTray(); }
+      break;
+    }
+    case 'full': clearInterval(MP.joinT); mpEnd('La table est complète.', false); break;
+    case 'closed': mpEnd(`${MP.hostName || 'L\'hôte'} a fermé la table.`, false); break;
+    case 'gone': mpEnd('Tu ne fais plus partie de cette table.', false); break;
+    case 'ro': mpRoRecv(m); break;
+    case 'rospin': if (MP.game === 'roulette' && !RO.spinning) roSpin(clamp(m.pocket | 0, 0, 36)); break;
+    case 'pkinfo': MP.pkInfo = m; if (VIEW === 'poker') pkRender(true); break;
+    case 'pkview': mpPkView(m); break;
+    case 'pknote':
+      if (m.msg) toast(String(m.msg).slice(0, 200));
+      if (m.ko) mpPkRefundSit();
+      if (m.rebuyko > 0 && S.poker) { credit(m.rebuyko); S.poker.buyins = round2(S.poker.buyins - m.rebuyko); save(); renderWallet(); }
+      break;
+    case 'bj': bjmApply(m); break;
+  }
+}
+function mpLeaveAsk() {
+  if (mpIsHost()) {
+    confirmBox('Fermer la table ?', 'Tous les joueurs seront renvoyés et chacun récupère ses jetons. La main en cours est annulée pour tout le monde.', 'Fermer la table', mpClose, 'danger');
+    return;
+  }
+  const inHand = MP.game === 'poker' && PK.phase === 'hand' && PK.seats[0] && PK.seats[0].cards.length && !PK.seats[0].folded;
+  const inBj = MP.game === 'blackjack' && MP.bjv && MP.bjv.phase !== 'bet' && S.pending.bj > 0;
+  confirmBox('Quitter la table ?', inHand ? 'Ta main en cours sera couchée et ce que tu as misé reste dans le pot.' : inBj ? 'Ta main en cours est abandonnée : ta mise est perdue.' : 'Tu pourras revenir avec le même lien tant que la table est ouverte.', 'Quitter', () => { mpSend('h', { k: 'bye' }); mpEnd(null, true); }, 'danger');
+}
+function mpClose() { mpSend('a', { k: 'closed' }); mpGameCleanup(false); const c = MP.client; MP.client = null; setTimeout(() => { try { c && c.end(); } catch (e) { /* rien */ } }, 800); mpReset(); toast('Table fermée.'); }
+function mpEnd(reason, voluntary) {
+  if (!MP.role) return;
+  mpGameCleanup(voluntary);
+  mpReset();
+  if (reason) modal({ title: 'Fin de la table', body: `<p>${esc(reason)}</p>`, actions: [{ label: 'OK', kind: 'primary' }] });
+}
+// Rend à chacun ce qui lui revient quand une table se termine.
+function mpGameCleanup(voluntary) {
+  if (MP.game === 'poker') {
+    if (MP.role === 'host') {
+      if (PK.phase !== 'setup') {
+        const me = PK.seats[0];
+        if (PK.phase === 'hand' && me && me.cards.length && !me.folded && !me.out) { S.stats.po.n++; S.stats.po.net = round2(S.stats.po.net + (me.win || 0) - me.total); }
+        pkCashOut();
+      }
+    } else mpPkGuestCashOut();
+  } else if (MP.game === 'blackjack') {
+    const v = S.pending.bj;
+    if (v > 0) {
+      if (voluntary && MP.bjv && MP.bjv.phase !== 'bet') {
+        S.stats.bj.n++; S.stats.bj.net = round2(S.stats.bj.net - v);
+        addHist('blackjack', 'Blackjack entre amis · main abandonnée', -v);
+      } else { credit(v); toast(`Ta mise de ${money(v)} t'a été rendue.`); }
+      S.pending.bj = 0;
+    }
+    BJ.bet = 0; BJ.undo = [];
+  }
+  save(); renderWallet();
+}
+function mpReset() {
+  clearInterval(MP.hbT); clearInterval(MP.joinT);
+  for (const k of Object.keys(MP.soon)) if (k.endsWith('T') && MP.soon[k]) clearTimeout(MP.soon[k]);
+  if (MP.bj) for (const t of ['autoT', 'insT', 'turnT', 'nextT']) clearTimeout(MP.bj[t]);
+  if (MP.ro) clearTimeout(MP.ro.autoT);
+  const c = MP.client;
+  if (c) { MP.client = null; try { c.end(true); } catch (e) { /* rien */ } }
+  if (wakeLock) { wakeLock.release().catch(() => { /* déjà libéré */ }); wakeLock = null; }
+  const game = MP.game, wasHost = MP.role === 'host';
+  Object.assign(MP, { role: null, code: '', game: null, key: null, topic: '', hostId: null, hostName: '', players: [], status: 'off', soon: {}, ro: null, roReady: false, roSent: '', pk: null, pkInfo: null, pkSeq: 0, pkHand: 0, pkStreet: '', pkWaiting: false, bj: null, bjv: null, bjLocal: 0, bjBusy: false });
+  MP.gen++;
+  if (game === 'poker' && !wasHost) { PK.gen++; clearTimeout(PK.botT); Object.assign(PK, { phase: 'setup', seats: [], waitHuman: false, board: [], log: [], best: null, deadline: 0 }); }
+  if (game === 'blackjack') { BJ.hands = []; BJ.dealer = []; bjMsg(''); $('#bj-hands').classList.remove('multi'); }
+  if (game === 'roulette') { RO.bets = RO.spinning ? RO.bets : {}; RO.undo = []; }
+  mpRenderBar(); refreshViews();
+}
+function mpInvite(fresh) {
+  if (!MP.code) return;
+  const link = SITE_URL + '#r-' + MP.code, g = MP_GAMES[MP.game];
+  modal({
+    title: fresh ? 'Ta table est prête' : 'Inviter des amis',
+    body: `<p>Envoie ce lien à tes potes : ils choisissent un pseudo et arrivent directement à ta table, sans compte. Chacun joue avec son propre portefeuille.</p>
+      <div class="mp-code" aria-label="Code de la table">${MP.code}</div>
+      <p class="fine">Ils peuvent aussi taper ce code dans « Jouer entre amis ». ${g.name} · jusqu'à ${g.max} joueurs.${mpIsHost() ? ' Garde cette page ouverte : c\'est ton navigateur qui tient la table.' : ''}</p>`,
+    actions: [
+      ...(navigator.share ? [{ label: 'Partager', run: () => { navigator.share({ title: 'Cercle 37', text: `Rejoins ma table de ${g.name.toLowerCase()} au Cercle 37`, url: link }).catch(() => { /* partage annulé */ }); } }] : []),
+      { label: 'Copier le lien', kind: 'primary', run: c => { copyText(link, 'Lien copié : envoie-le à tes potes.'); c(); } }
+    ]
+  });
+}
+function mpRenderBar() {
+  const bar = $('#mp-bar');
+  if (!bar) return;
+  if (!MP.role) { bar.hidden = true; bar.innerHTML = ''; return; }
+  bar.hidden = false;
+  const g = MP_GAMES[MP.game];
+  const sub = MP.role === 'joining' ? 'Connexion à la table…' : MP.status === 'lost' ? (mpIsHost() ? 'Connexion perdue, nouvelle tentative…' : 'L\'hôte ne répond plus, on attend qu\'il revienne…') : `${mpIsHost() ? 'Tu es l\'hôte' : `Hôte : ${esc(MP.hostName)}`} · code ${MP.code}`;
+  bar.innerHTML = `<span class="mp-dot ${MP.role === 'joining' ? 'connecting' : MP.status}"></span>
+    <div class="mp-txt"><b>Table entre amis${g ? ` · ${g.name}` : ''}</b><span>${sub}</span></div>
+    <div class="mp-people">${MP.players.map(p => `<span class="mp-av${p.on ? '' : ' off'}" style="--c:${p.color}" title="${esc(p.name)}${p.id === MP.me.id ? ' (toi)' : ''}${p.on ? '' : ' · déconnecté'}">${esc(initials(p.name))}</span>`).join('')}</div>
+    <div class="mp-acts">${MP.game && VIEW !== MP.game ? `<button type="button" class="btn small" data-mp="back">Retour à la table</button>` : ''}${MP.role !== 'joining' ? '<button type="button" class="btn small" data-mp="invite">Inviter</button>' : ''}<button type="button" class="btn small danger" data-mp="leave">${mpIsHost() ? 'Fermer la table' : 'Quitter'}</button></div>`;
+}
+$('#mp-bar').addEventListener('click', e => {
+  const b = e.target.closest('[data-mp]'); if (!b) return;
+  if (b.dataset.mp === 'invite') mpInvite(false);
+  else if (b.dataset.mp === 'back') show(MP.game);
+  else if (b.dataset.mp === 'leave') { if (MP.role === 'joining') mpReset(); else mpLeaveAsk(); }
+});
+function mpSalonPanel() {
+  if (!MP_OK) {
+    return `<div class="panel mp-panel"><div><h3>Jouer entre amis</h3><p class="fine">Poker, roulette ou blackjack à plusieurs, en même temps, chacun avec son portefeuille. Le jeu entre amis fonctionne sur le site public du Cercle 37.</p></div>
+      <div class="row"><a class="btn primary" href="${SITE_URL}" target="_blank" rel="noopener">Ouvrir le site public</a></div></div>`;
+  }
+  if (MP.role) {
+    return `<div class="panel mp-panel"><div><h3>Jouer entre amis</h3><p class="fine">Tu es à une table de ${MP_GAMES[MP.game] ? MP_GAMES[MP.game].name.toLowerCase() : 'jeu'}${MP.role === 'guest' ? ` avec ${esc(MP.hostName)}` : ''} · code ${MP.code}.</p></div>
+      <div class="row"><button type="button" class="btn primary" data-mpgo="back">Retour à la table</button><button type="button" class="btn" data-mpgo="invite">Inviter</button></div></div>`;
+  }
+  return `<div class="panel mp-panel"><div><h3>Jouer entre amis</h3><p class="fine">Crée une table et envoie le lien : poker, roulette ou blackjack, tous en même temps, chacun avec son propre portefeuille. Personne n'a besoin de compte.</p></div>
+    <div class="mp-join"><button type="button" class="btn primary" data-mpgo="create">Créer une table</button><div class="row"><input type="text" id="mp-code" maxlength="9" placeholder="Code reçu" autocomplete="off" aria-label="Code de la table"><button type="button" class="btn" data-mpgo="join">Rejoindre</button></div></div></div>`;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-mpgo]'); if (!b) return;
+  const a = b.dataset.mpgo;
+  if (a === 'create') mpCreateModal();
+  else if (a === 'join') { const v = ($('#mp-code') || {}).value; if (!v) { toast('Tape le code que ton ami t\'a envoyé.'); return; } mpJoin(v); }
+  else if (a === 'back') show(MP.game);
+  else if (a === 'invite') mpInvite(false);
+});
+function mpCreateModal() {
+  if (!MP_OK) { mpFail(`Le jeu entre amis fonctionne sur le site public : ${SITE_URL}`); return; }
+  if (MP.role) { show(MP.game); return; }
+  const p = S.settings.pk;
+  let game = 'poker', stake = p.stake, bots = 0, level = p.level, bjt = S.settings.bjTable, buy = 0;
+  const games = [['poker', 'Poker', 'Texas Hold\'em jusqu\'à 6 joueurs, avec des joueurs fictifs pour compléter si vous êtes peu.'], ['roulette', 'Roulette', 'Un seul cylindre pour tout le monde, chacun mise de son côté. Jusqu\'à 8 joueurs.'], ['blackjack', 'Blackjack', 'Tous contre la même banque, chacun joue sa main à son tour. Jusqu\'à 5 joueurs.']];
+  const body = () => {
+    const st = PK_STAKES[stake], bb = st.bb, min = bb * 20, hi = Math.min(bb * 100, Math.floor(S.balance / bb) * bb);
+    buy = hi >= min ? clamp(buy || hi, min, hi) : 0;
+    return `<div class="field"><div class="flabel">Jeu</div><div class="levels">${games.map(([k, n, d]) => `<button type="button" class="lvl${game === k ? ' on' : ''}" data-g="${k}" aria-pressed="${game === k}"><b>${n}</b><span>${d}</span></button>`).join('')}</div></div>
+      ${game === 'poker' ? `
+      <div class="field"><label class="flabel" for="mc-stake">Blindes</label><select id="mc-stake">${PK_STAKES.map((x, i) => `<option value="${i}"${i === stake ? ' selected' : ''}>${x.sb} / ${x.bb} · cave de ${money(x.bb * 20)} à ${money(x.bb * 100)}</option>`).join('')}</select></div>
+      <div class="field"><div class="flabel">Joueurs fictifs pour compléter la table</div><div class="seg" id="mc-bots">${[0, 1, 2, 3, 4].map(n => `<button type="button" data-n="${n}" class="${bots === n ? 'on' : ''}">${n}</button>`).join('')}</div>
+        ${bots ? `<div class="seg" id="mc-level">${PK_LEVELS.map((l, i) => `<button type="button" data-l="${i}" class="${level === i ? 'on' : ''}">${l.name}</button>`).join('')}</div>` : '<p class="fine">Aucun : vous jouez seulement entre vous (il faut être au moins deux).</p>'}</div>
+      <div class="field"><label class="flabel" for="mc-buy">Ta cave</label>${buy ? `<div class="buyrow"><input type="range" id="mc-buy" min="${min}" max="${hi}" step="${bb}" value="${buy}"><output id="mc-buy-out">${money(buy)}</output></div>` : `<p class="warn">Il te faut au moins ${money(min)} pour ces blindes. Ton solde : ${money(S.balance)}.</p>`}</div>` : ''}
+      ${game === 'blackjack' ? `<div class="field"><label class="flabel" for="mc-bjt">Table</label><select id="mc-bjt">${BJ_TABLES.map((x, i) => `<option value="${i}"${i === bjt ? ' selected' : ''}>${x.name} · ${money(x.min)} à ${money(x.max)}</option>`).join('')}</select></div>` : ''}
+      <p class="fine">Tu reçois un lien à envoyer à tes potes. Garde la page ouverte pendant la partie : c'est ton navigateur qui tient la table.</p>`;
+  };
+  modal({
+    title: 'Créer une table entre amis', wide: true, body: '<div id="mc-body"></div>',
+    actions: [{ label: 'Annuler' }, { label: 'Créer la table', kind: 'primary', run: c => {
+      if (game === 'poker' && !buy) { toast('Solde insuffisant pour ces blindes.', { label: 'Alimenter', run: openWallet }); return; }
+      c();
+      if (game === 'poker') { S.settings.pk.stake = stake; S.settings.pk.level = level; save(); }
+      mpCreate(game, { stake, bots, level, buy, table: bjt });
+    } }],
+    onMount(m) {
+      const draw = () => { $('#mc-body', m).innerHTML = body(); const r = $('#mc-buy', m); if (r) r.oninput = () => { buy = +r.value; $('#mc-buy-out', m).textContent = money(buy); }; };
+      m.addEventListener('click', e => {
+        const g = e.target.closest('[data-g]'); if (g) { game = g.dataset.g; draw(); return; }
+        const n = e.target.closest('#mc-bots [data-n]'); if (n) { bots = +n.dataset.n; draw(); return; }
+        const l = e.target.closest('#mc-level [data-l]'); if (l) { level = +l.dataset.l; draw(); }
+      });
+      m.addEventListener('change', e => {
+        if (e.target.id === 'mc-stake') { stake = +e.target.value; buy = 0; draw(); }
+        else if (e.target.id === 'mc-bjt') bjt = +e.target.value;
+      });
+      draw();
+    }
+  });
+}
+
+/* --- roulette entre amis : un seul lancer, chacun règle ses mises chez lui --- */
+function mpRoInit() { MP.ro = { round: 0, bets: {}, ready: {}, res: {}, n: null, spinning: false }; MP.roReady = false; MP.roSent = ''; mpRoBroadcast(); }
+function mpRoBroadcast() {
+  if (!MP.ro) return;
+  if (VIEW === 'roulette') { roRenderPanel(); roRenderChips(); roRenderTray(); }
+  if (mpIsHost()) mpSoon('ro', () => { if (MP.ro) mpSend('a', { k: 'ro', round: MP.ro.round, bets: MP.ro.bets, ready: MP.ro.ready, res: MP.ro.res, n: MP.ro.n, spinning: MP.ro.spinning }); }, 120);
+}
+function mpRoClean(bets) {
+  const out = {};
+  if (bets && typeof bets === 'object') for (const [id, a] of Object.entries(bets)) { if (ROB[id] && finite(a) && a > 0) out[id] = Math.min(round2(a), RO_LIM[ROB[id].kind]); }
+  return out;
+}
+function mpRoRecv(m) {
+  if (MP.game !== 'roulette') return;
+  const cleanMap = (o, f) => { const r = {}; if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) r[String(k)] = f(v); return r; };
+  MP.ro = { round: m.round | 0, bets: cleanMap(m.bets, mpRoClean), ready: cleanMap(m.ready, v => !!v), res: cleanMap(m.res, v => ({ net: finite(v && v.net) ? v.net : 0, total: finite(v && v.total) ? v.total : 0 })), n: m.n == null ? null : m.n | 0, spinning: !!m.spinning };
+  if (!MP.ro.ready[MP.me.id] && MP.roReady && !RO.spinning && !MP.ro.spinning) MP.roReady = false;
+  if (VIEW === 'roulette') { roRenderPanel(); roRenderChips(); roRenderTray(); }
+}
+function mpRoLocalBets() {
+  if (!mpIs('roulette') || !MP.ro) return;
+  const js = JSON.stringify(RO.bets);
+  if (js === MP.roSent) return;
+  MP.roSent = js;
+  if (mpIsHost()) { MP.ro.bets[MP.me.id] = { ...RO.bets }; mpRoBroadcast(); }
+  else mpSoon('robets', () => mpSend('h', { k: 'robets', bets: RO.bets }), 250);
+}
+function mpRoToggleReady() {
+  if (!MP.ro || RO.spinning) return;
+  MP.roReady = !MP.roReady; Snd.chip();
+  if (mpIsHost()) { MP.ro.ready[MP.me.id] = MP.roReady; mpRoBroadcast(); mpRoMaybeSpin(); }
+  else { MP.ro.ready[MP.me.id] = MP.roReady; mpSend('h', { k: 'roready', v: MP.roReady }); roRenderTray(); roRenderPanel(); }
+}
+function mpRoMsg(p, m) {
+  if (!MP.ro) return;
+  if (m.k === 'robets') { MP.ro.bets[p.id] = mpRoClean(m.bets); mpRoBroadcast(); }
+  else if (m.k === 'roready') { MP.ro.ready[p.id] = !!m.v; mpRoBroadcast(); mpRoMaybeSpin(); }
+  else if (m.k === 'ronet') { if ((m.round | 0) === MP.ro.round) { MP.ro.res[p.id] = { net: finite(m.net) ? m.net : 0, total: finite(m.total) ? m.total : 0 }; mpRoBroadcast(); } }
+}
+function mpRoMaybeSpin() {
+  if (!MP.ro || !mpIsHost() || MP.ro.spinning) return;
+  clearTimeout(MP.ro.autoT);
+  const online = MP.players.filter(p => p.on);
+  if (online.length && online.every(p => MP.ro.ready[p.id])) MP.ro.autoT = setTimeout(mpRoSpin, 900);
+}
+function mpRoSpin() {
+  if (!MP.ro || !mpIsHost() || MP.ro.spinning || RO.spinning) return;
+  clearTimeout(MP.ro.autoT);
+  MP.ro.round++; MP.ro.spinning = true; MP.ro.res = {};
+  const k = rngInt(37);
+  mpSend('a', { k: 'rospin', round: MP.ro.round, pocket: k });
+  mpRoBroadcast();
+  roSpin(k);
+}
+function mpRoAfterSpin(net, total, n) {
+  MP.roReady = false;
+  if (!MP.ro) return;
+  if (mpIsHost()) { MP.ro.res[MP.me.id] = { net, total }; MP.ro.ready = {}; MP.ro.spinning = false; MP.ro.n = n; mpRoBroadcast(); }
+  else { MP.ro.ready[MP.me.id] = false; mpSend('h', { k: 'ronet', round: MP.ro.round, net, total }); }
+}
+
+/* --- poker entre amis : la table tourne chez l'hôte, chacun reçoit sa vue --- */
+const pkBlank = () => ({ cards: [], bet: 0, total: 0, folded: false, allIn: false, acted: false, last: '', pf: 'none', win: 0, shown: false, hn: '', eq: null, out: false });
+function mpPkHostStart(o) {
+  const st = PK_STAKES[o.stake], bb = st.bb;
+  if (!(o.buy >= bb * 20) || !debit(o.buy)) { lowFunds(); return false; }
+  PK.cfg = { sb: st.sb, bb, level: o.level, nOpp: o.bots };
+  PK.buyins = o.buy;
+  PK.seats = [Object.assign({ human: true, name: S.pseudo, stack: o.buy, color: MP.players[0].color }, pkBlank())];
+  for (let i = 0; i < o.bots; i++) PK.seats.push(Object.assign(pkNewBot(), { out: false }));
+  PK.button = 0; PK.handNo = 0; PK.log = []; PK.gen++; PK.waiting = false; PK.waitRemote = -1; PK.deadline = 0;
+  PK.h = { hands: 0, pfr: 0, faced: 0, folded: 0, aggr: 0, pass: 0 };
+  S.poker = { stack: o.buy, buyins: o.buy };
+  save(); renderWallet();
+  MP.pk = { sits: [], seq: 0 };
+  PK.phase = 'between';
+  pkLog(`Table entre amis ouverte · blindes ${PK.cfg.sb}/${PK.cfg.bb}.`, 'h');
+  return true;
+}
+function mpPkInfo() {
+  if (!mpPkHostOn() || !MP.pk) return;
+  const bots = PK.seats.filter((s, j) => j > 0 && !s.remote).length;
+  mpSend('a', { k: 'pkinfo', cfg: { sb: PK.cfg.sb, bb: PK.cfg.bb, level: PK.cfg.level }, seated: PK.seats.length + MP.pk.sits.length, bots });
+}
+function pkRemoveSeat(i) { PK.seats.splice(i, 1); if (i < PK.button) PK.button--; if (PK.button >= PK.seats.length) PK.button = 0; }
+function mpPkSeatChanges() {
+  for (let i = PK.seats.length - 1; i >= 1; i--) if (PK.seats[i].leaving) pkRemoveSeat(i);
+  while (MP.pk.sits.length) {
+    if (PK.seats.length >= 6) {
+      const bi = PK.seats.findIndex((s, j) => j > 0 && !s.remote);
+      if (bi < 0) break;
+      pkLog(`${esc(PK.seats[bi].name)} laisse sa place.`);
+      pkRemoveSeat(bi);
+    }
+    const q = MP.pk.sits.shift();
+    if (!mpOnlinePid(q.pid) && !MP.players.find(p => p.id === q.pid)) continue;
+    PK.seats.push(Object.assign({ human: false, remote: q.pid, name: q.name, color: q.color, stack: q.buyin }, pkBlank()));
+    pkLog(`${esc(q.name)} s'assoit avec ${money(q.buyin)}.`);
+  }
+  mpPkInfo();
+}
+function mpPkMsg(p, m) {
+  if (!MP.pk || PK.phase === 'setup') return;
+  const idx = PK.seats.findIndex(s => s.remote === p.id);
+  if (m.k === 'pksit') {
+    const bb = PK.cfg.bb, buy = Math.round(clamp(+m.buyin || 0, bb * 20, bb * 100) / bb) * bb;
+    if (idx >= 0 || MP.pk.sits.some(q => q.pid === p.id)) return;
+    const bots = PK.seats.filter((s, j) => j > 0 && !s.remote).length;
+    if (PK.seats.length + MP.pk.sits.length >= 6 && bots === 0) { mpSend('p:' + p.id, { k: 'pknote', ko: 1, msg: 'La table est complète (6 joueurs).' }); return; }
+    MP.pk.sits.push({ pid: p.id, name: p.name, color: p.color, buyin: buy });
+    pkLog(`${esc(p.name)} prend place et joue dès la prochaine main.`);
+    mpSend('p:' + p.id, { k: 'pknote', msg: 'Tu es installé : tu joues dès la prochaine main.' });
+    mpPkInfo();
+    if (PK.phase === 'between' && PK.waiting) pkStartHand(); else pkRender(true);
+  } else if (m.k === 'pkact') {
+    if (idx >= 0 && PK.phase === 'hand' && PK.toAct === idx && PK.waitRemote === idx && ['fold', 'check', 'call', 'raise'].includes(m.type)) pkApply(idx, m.type, +m.to || 0);
+  } else if (m.k === 'pkrebuy') {
+    const s = PK.seats[idx], amt = Math.round(+m.amount || 0);
+    if (!s || !(amt > 0) || (PK.phase === 'hand' && !s.out) || s.stack + amt > PK.cfg.bb * 100) { mpSend('p:' + p.id, { k: 'pknote', rebuyko: amt > 0 ? amt : 0, msg: 'Recave impossible pour le moment : réessaie entre deux mains.' }); return; }
+    s.stack += amt; if (PK.phase === 'hand') PK.chipsAtStart += amt;
+    pkLog(`${esc(s.name)} recave ${money(amt)}.`);
+    if (PK.phase === 'between' && PK.waiting) pkStartHand(); else pkRender(true);
+  } else if (m.k === 'pkleave') mpPkRemove(p.id);
+}
+function mpPkRemove(pid) {
+  if (!MP.pk) return;
+  MP.pk.sits = MP.pk.sits.filter(q => q.pid !== pid);
+  const i = PK.seats.findIndex(s => s.remote === pid);
+  if (i < 0) { mpPkInfo(); return; }
+  const s = PK.seats[i];
+  pkLog(`${esc(s.name)} quitte la table.`);
+  if (PK.phase === 'hand') {
+    PK.chipsAtStart -= s.stack; s.stack = 0; s.leaving = true;
+    if (!s.folded && !s.out) {
+      if (PK.toAct === i && PK.waitRemote === i) pkApply(i, 'fold');
+      else { s.folded = true; s.last = 'Parti'; }
+    }
+  } else pkRemoveSeat(i);
+  mpPkInfo();
+  pkRender(true);
+}
+function pkViewFor(si) {
+  const N = PK.seats.length, rot = i => (i - si + N) % N, seats = [];
+  PK.seats.forEach((s, i) => {
+    seats[rot(i)] = { name: s.name, color: s.color, stack: s.stack, bet: s.bet, total: s.total, folded: s.folded, allIn: s.allIn, acted: s.acted, last: s.last, win: s.win, shown: s.shown, hn: s.hn, eq: s.eq, out: !!s.out, human: i === si, remote: i !== si && !!s.remote, cards: (i === si || s.shown) ? s.cards : s.cards.map((c, k) => -1 - k) };
+  });
+  return {
+    k: 'pkview', seq: ++MP.pk.seq, seats, button: rot(PK.button), sbI: rot(PK.sbI), bbI: rot(PK.bbI), toAct: rot(PK.toAct), board: PK.board, street: PK.street, phase: PK.phase,
+    curBet: PK.curBet, lastRaise: PK.lastRaise, raises: PK.raises, handNo: PK.handNo, cfg: PK.cfg, best: PK.best ? [...PK.best] : null, waiting: !!PK.waiting,
+    waitHuman: PK.phase === 'hand' && PK.waitRemote === si, deadline: PK.deadline && PK.waitRemote >= 0 ? Math.max(0, PK.deadline - Date.now()) : 0, log: PK.log.slice(-60)
+  };
+}
+function mpPkBroadcast() {
+  if (!mpPkHostOn() || !MP.pk) return;
+  mpSoon('pk', () => { if (!mpPkHostOn()) return; PK.seats.forEach((s, i) => { if (s.remote) mpSend('p:' + s.remote, pkViewFor(i)); }); }, 90);
+}
+function mpPkView(v) {
+  if (!mpPkGuest() || !Array.isArray(v.seats) || !v.seats.length) return;
+  if ((v.seq | 0) <= MP.pkSeq) return;
+  MP.pkSeq = v.seq | 0; MP.pkWaiting = false;
+  const prevWait = PK.waitHuman, newHand = v.handNo !== MP.pkHand, newStreet = v.street !== MP.pkStreet;
+  if (newHand) { PK.seen = new Set(); PK.flip = new Set(); MP.pkHand = v.handNo; PK.pre = null; }
+  if (newStreet) { MP.pkStreet = v.street; if (!newHand) PK.pre = null; }
+  const boardBefore = PK.board ? PK.board.length : 0;
+  Object.assign(PK, {
+    seats: v.seats.map(s => Object.assign({ color: '#888888' }, s, { name: cleanName(s.name) || 'Joueur', color: /^#[0-9A-Fa-f]{6}$/.test(s.color) ? s.color : (s.human ? 'var(--accent)' : '#888888') })),
+    button: v.button | 0, sbI: v.sbI | 0, bbI: v.bbI | 0, toAct: v.toAct | 0, board: Array.isArray(v.board) ? v.board : [], street: v.street, phase: v.phase === 'hand' ? 'hand' : 'between',
+    curBet: +v.curBet || 0, lastRaise: +v.lastRaise || 0, raises: v.raises | 0, handNo: v.handNo | 0, cfg: v.cfg, best: v.best ? new Set(v.best) : null, waiting: !!v.waiting,
+    waitHuman: !!v.waitHuman, deadline: v.deadline ? Date.now() + v.deadline : 0, log: Array.isArray(v.log) ? v.log : [], buyins: S.poker ? S.poker.buyins : 0
+  });
+  const me = PK.seats[0];
+  if (S.poker) { S.poker.stack = me.stack; save(); }
+  if (PK.board.length > boardBefore || newHand) Snd.card();
+  if (PK.phase === 'between' && PK.handNo && MP.pkCounted !== PK.handNo && me.cards.length && !me.out) {
+    MP.pkCounted = PK.handNo;
+    const net = me.win - me.total;
+    S.stats.po.n++; S.stats.po.net = round2(S.stats.po.net + net); recordBest(net); save();
+    if (me.win > 0) Snd.win();
+  }
+  if (PK.waitHuman && !prevWait) {
+    pkDefaultRaise();
+    const toCall = PK.curBet - me.bet, pre = PK.pre;
+    if (pre && !(pre === 'ck' && toCall > 0)) {
+      const act = pre === 'cf' ? (toCall > 0 ? 'fold' : 'check') : pre === 'ck' ? 'check' : (toCall > 0 ? 'call' : 'check');
+      PK.pre = null;
+      setTimeout(() => pkHumanAct(act), 250);
+    } else if (pre === 'ck') PK.pre = null;
+  }
+  pkRender(); renderWallet();
+}
+function pkHumanAct(type, to) {
+  if (!PK.waitHuman || PK.phase !== 'hand' || PK.toAct !== 0) return;
+  if (mpPkGuest()) {
+    PK.waitHuman = false; PK.pre = null; mpSend('h', { k: 'pkact', type, to }); Snd.chip(); pkRender(true);
+    // si la table ne répond pas (message perdu), on te rend la main pour réessayer
+    const seq = MP.pkSeq, hand = PK.handNo;
+    setTimeout(() => { if (mpPkGuest() && MP.pkSeq === seq && PK.handNo === hand && PK.phase === 'hand' && PK.toAct === 0 && !PK.waitHuman) { PK.waitHuman = true; pkRender(true); } }, 4000);
+    return;
+  }
+  pkApply(0, type, to);
+}
+function mpPkSit(buy) {
+  if (!mpPkGuest() || S.poker) return;
+  if (!debit(buy)) { lowFunds(); return; }
+  S.poker = { stack: buy, buyins: buy, mp: 1 }; save(); renderWallet();
+  MP.pkWaiting = true;
+  mpSend('h', { k: 'pksit', buyin: buy });
+  pkRender(true);
+}
+function mpPkRefundSit() {
+  if (S.poker && (!PK.seats.length || MP.pkWaiting)) { credit(S.poker.stack); S.poker = null; MP.pkWaiting = false; save(); renderWallet(); pkRender(true); }
+}
+function mpPkGuestCashOut() {
+  if (!S.poker) return;
+  const me = PK.seats[0];
+  if (me && PK.phase === 'hand' && me.cards.length && !me.out && MP.pkCounted !== PK.handNo) { S.stats.po.n++; S.stats.po.net = round2(S.stats.po.net - me.total); }
+  const out = S.poker.stack, net = round2(out - S.poker.buyins);
+  credit(out); S.poker = null;
+  addHist('poker', 'Poker entre amis', net);
+  toast(`Tu repars avec ${money(out)} (${money(net, true)}).`);
+}
+function mpPkRebuyBox() {
+  const me = PK.seats[0], bb = PK.cfg.bb, maxStack = bb * 100;
+  if (PK.phase === 'hand' && !me.out) { toast('Tu pourras recaver à la fin de la main.'); return; }
+  const room = Math.min(maxStack - me.stack, Math.floor(S.balance / bb) * bb);
+  if (room < bb) { toast(me.stack >= maxStack ? 'Tu as déjà la cave maximum (100 grosses blindes).' : 'Solde insuffisant pour recaver.', me.stack >= maxStack ? null : { label: 'Alimenter', run: openWallet }); return; }
+  const def = Math.min(room, Math.max(bb * 10, maxStack - me.stack));
+  modal({
+    title: 'Recaver',
+    body: `<p>Tu as ${money(me.stack)} devant toi. La cave est limitée à 100 grosses blindes.</p><div class="field"><label class="flabel" for="rb-amt">Montant</label><div class="buyrow"><input type="range" id="rb-amt" min="${Math.min(bb * 10, room)}" max="${room}" step="${bb}" value="${def}"><output id="rb-out">${money(def)}</output></div></div>`,
+    actions: [{ label: 'Annuler' }, { label: 'Recaver', kind: 'primary', run: (c, m) => {
+      const v = +$('#rb-amt', m).value;
+      if (!S.poker || !debit(v)) { lowFunds(); return; }
+      S.poker.buyins = round2(S.poker.buyins + v); save(); renderWallet();
+      mpSend('h', { k: 'pkrebuy', amount: v }); c();
+    } }],
+    onMount(m) { const r = $('#rb-amt', m); r.oninput = () => { $('#rb-out', m).textContent = money(+r.value); }; }
+  });
+}
+function mpPkSitPanel() {
+  const el = $('#pk-setup'), info = MP.pkInfo;
+  if (!info || !info.cfg) { el.innerHTML = `<div class="panel"><h3>Table de ${esc(MP.hostName)}</h3><p class="fine">Connexion à la table…</p></div>`; return; }
+  const bb = info.cfg.bb, min = bb * 20, max = Math.min(bb * 100, Math.floor(S.balance / bb) * bb), ok = max >= min;
+  if (!PK.setupBuy || PK.setupBuy < min || PK.setupBuy > max) PK.setupBuy = ok ? max : min;
+  const bots = info.bots | 0, seated = info.seated | 0;
+  el.innerHTML = `<div class="pk-setup"><div class="panel setup-main"><h3>Table de ${esc(MP.hostName)}</h3>
+    <p class="fine">Blindes ${info.cfg.sb}/${info.cfg.bb} · ${seated} joueur${seated > 1 ? 's' : ''} sur 6${bots ? `, dont ${bots} fictif${bots > 1 ? 's' : ''} (${PK_LEVELS[info.cfg.level] ? PK_LEVELS[info.cfg.level].name.toLowerCase() : ''})` : ''}.</p>
+    ${MP.pkWaiting ? '<p class="warn">Tu es installé : tu joues dès la prochaine main.</p>'
+      : ok ? `<div class="field"><label class="flabel" for="pk-buy">Ta cave</label><div class="buyrow"><input type="range" id="pk-buy" min="${min}" max="${max}" step="${bb}" value="${PK.setupBuy}"><output id="pk-buy-out">${money(PK.setupBuy)}</output></div><p class="fine">Prise sur ton solde, rendue quand tu quittes la table.</p></div><div class="row"><button type="button" class="btn primary big" id="pk-msit">S'asseoir à la table</button></div>`
+      : `<p class="warn">Il te faut au moins ${money(min)} pour t'asseoir. Ton solde : ${money(S.balance)}.</p><div class="row"><button type="button" class="btn accent big" id="pk-fund">Alimenter mon solde</button></div>`}
+    </div><aside class="panel"><h3>Entre amis</h3><p class="fine">Chacun voit ses propres cartes, personne d'autre. Quand c'est à toi, tu as 40 secondes pour jouer, sinon ta main est couchée (ou tu parles si c'est gratuit). Ta cave revient sur ton solde quand tu quittes la table.</p></aside></div>`;
+  el.onclick = e => {
+    if (e.target.closest('#pk-msit')) mpPkSit(PK.setupBuy);
+    else if (e.target.closest('#pk-fund')) openWallet();
+  };
+  const r = $('#pk-buy');
+  if (r) r.oninput = () => { PK.setupBuy = +r.value; $('#pk-buy-out').textContent = money(PK.setupBuy); };
+}
+
+/* --- blackjack entre amis : tous contre la même banque --- */
+function bjmInit(o) {
+  MP.bj = { table: o && o.table != null ? clamp(o.table | 0, 0, BJ_TABLES.length - 1) : S.settings.bjTable, phase: 'bet', round: 1, seats: [], dealer: [], hole: true, shoe: [], cut: 0, id: 0, turn: null, deadline: 0, msg: 'Faites vos jeux', seq: 0, busy: false };
+  bjmSyncSeats(); bjmBroadcast();
+}
+function bjmSeatOf(pid) { return MP.bj ? MP.bj.seats.find(s => s.pid === pid) : null; }
+function bjmSyncSeats() {
+  const B = MP.bj; if (!B) return;
+  for (const p of MP.players) if (!bjmSeatOf(p.id) && B.seats.length < 5) B.seats.push({ pid: p.id, name: p.name, color: p.color, bet: 0, ready: false, pass: false, hands: [], ins: 0, insd: false, stake: 0, ret: null, net: null, gone: false });
+  for (const s of B.seats) { const p = MP.players.find(x => x.id === s.pid); if (p) { s.name = p.name; s.color = p.color; } }
+}
+function bjmShoe() { const B = MP.bj, s = []; for (let d = 0; d < 6; d++) for (let su = 0; su < 4; su++) for (let r = 0; r < 13; r++) s.push({ r, s: su }); shuffle(s); B.shoe = s; B.cut = Math.floor(s.length * (0.22 + rand() * 0.08)); }
+function bjmDraw() { const B = MP.bj; if (!B.shoe.length) bjmShoe(); const c = B.shoe.pop(); return { r: c.r, s: c.s, id: ++B.id }; }
+function bjmState() {
+  const B = MP.bj;
+  return {
+    k: 'bj', seq: ++B.seq, phase: B.phase, round: B.round, table: B.table, msg: B.msg, turn: B.turn, shoe: B.shoe.length, busy: !!B.busy,
+    deadline: B.deadline ? Math.max(0, B.deadline - Date.now()) : 0,
+    dealer: B.dealer.map((c, i) => i === 1 && B.hole ? { r: -1, s: -1, id: c.id } : c),
+    seats: B.seats.map(s => ({ pid: s.pid, name: s.name, color: s.color, bet: s.bet, ready: s.ready, pass: s.pass, hands: s.hands, ins: s.ins, insd: s.insd, stake: s.stake, ret: s.ret, net: s.net, gone: s.gone }))
+  };
+}
+function bjmBroadcast() {
+  if (!MP.bj) return;
+  bjmApply(JSON.parse(JSON.stringify(bjmState())));
+  mpSoon('bj', () => { if (MP.bj && mpIsHost()) mpSend('a', bjmState()); }, 60);
+}
+function bjmMsg(p, m) {
+  if (!MP.bj) return;
+  if (m.k === 'bjbet') bjmBet(p.id, +m.bet);
+  else if (m.k === 'bjunbet') bjmUnbet(p.id);
+  else if (m.k === 'bjpass') bjmPass(p.id);
+  else if (m.k === 'bjins') bjmIns(p.id, !!m.take);
+  else if (m.k === 'bjact') bjmAct(p.id, String(m.a));
+}
+function bjmBet(pid, amt) {
+  const B = MP.bj, s = bjmSeatOf(pid), t = BJ_TABLES[B.table];
+  if (!s || B.phase !== 'bet' || !(amt >= t.min && amt <= t.max)) return;
+  s.bet = round2(amt); s.ready = true; s.pass = false; bjmBroadcast(); bjmMaybeDeal();
+}
+function bjmUnbet(pid) { const B = MP.bj, s = bjmSeatOf(pid); if (!s || B.phase !== 'bet') return; s.bet = 0; s.ready = false; s.pass = false; clearTimeout(B.autoT); bjmBroadcast(); }
+function bjmPass(pid) { const B = MP.bj, s = bjmSeatOf(pid); if (!s || B.phase !== 'bet') return; s.bet = 0; s.ready = true; s.pass = true; bjmBroadcast(); bjmMaybeDeal(); }
+function bjmMaybeDeal() {
+  const B = MP.bj; if (!B || B.phase !== 'bet') return;
+  clearTimeout(B.autoT);
+  const live = B.seats.filter(s => !s.gone && mpOnlinePid(s.pid));
+  if (live.length && live.every(s => s.ready) && live.some(s => s.bet > 0)) B.autoT = setTimeout(() => { if (MP.bj === B && B.phase === 'bet') bjmDeal(); }, 1300);
+}
+function bjmRemove(pid) {
+  const B = MP.bj; if (!B) return;
+  const si = B.seats.findIndex(s => s.pid === pid); if (si < 0) return;
+  const s = B.seats[si];
+  if (B.phase === 'bet' || !s.hands.length) { B.seats.splice(si, 1); if (B.turn && B.turn.s > si) B.turn.s--; bjmBroadcast(); bjmMaybeDeal(); return; }
+  s.gone = true;
+  if (B.phase === 'ins' && !s.insd) { s.insd = true; bjmInsCheck(); }
+  if (B.phase === 'play' && B.turn && B.turn.s === si && !B.busy) { for (const H of s.hands) H.done = true; clearTimeout(B.turnT); bjmNextTurn(); }
+  bjmBroadcast();
+}
+async function bjmDeal() {
+  const B = MP.bj, gen = MP.gen;
+  if (!B || B.phase !== 'bet') return;
+  clearTimeout(B.autoT);
+  const players = B.seats.filter(s => s.bet > 0 && !s.gone);
+  if (!players.length) { toast('Personne n\'a misé pour l\'instant.'); return; }
+  B.phase = 'deal'; B.msg = ''; B.turn = null; B.deadline = 0;
+  for (const s of B.seats) Object.assign(s, { hands: [], stake: 0, ret: null, net: null, ins: 0, insd: false });
+  B.dealer = []; B.hole = true;
+  if (!B.shoe.length || B.shoe.length <= B.cut) { bjmShoe(); B.msg = 'Nouveau sabot : le croupier mélange les cartes'; bjmBroadcast(); await wait(1000); if (gen !== MP.gen) return; B.msg = ''; }
+  for (const s of players) { s.hands = [{ cards: [], bet: s.bet, done: false, doubled: false, split: false, aces: false, res: null, tag: '' }]; s.stake = s.bet; }
+  for (let r = 0; r < 2; r++) {
+    for (const s of players) { s.hands[0].cards.push(bjmDraw()); Snd.card(); bjmBroadcast(); await wait(300); if (gen !== MP.gen) return; }
+    B.dealer.push(bjmDraw()); Snd.card(); bjmBroadcast(); await wait(320); if (gen !== MP.gen) return;
+  }
+  if (B.dealer[0].r === 12) {
+    B.phase = 'ins'; B.msg = 'La banque montre un As : assurance ?'; B.deadline = Date.now() + 12000;
+    bjmBroadcast();
+    B.insT = setTimeout(() => bjmAfterIns(), 12000);
+    return;
+  }
+  bjmAfterIns();
+}
+function bjmIns(pid, take) {
+  const B = MP.bj, s = bjmSeatOf(pid);
+  if (!B || B.phase !== 'ins' || !s || !s.hands.length || s.insd) return;
+  s.insd = true;
+  if (take) { s.ins = round2(s.hands[0].bet / 2); s.stake = round2(s.stake + s.ins); }
+  bjmBroadcast(); bjmInsCheck();
+}
+function bjmInsCheck() { const B = MP.bj; if (B && B.phase === 'ins' && B.seats.filter(s => s.hands.length).every(s => s.insd || s.gone)) { clearTimeout(B.insT); bjmAfterIns(); } }
+async function bjmAfterIns() {
+  const B = MP.bj, gen = MP.gen;
+  if (!B || (B.phase !== 'ins' && B.phase !== 'deal')) return;
+  clearTimeout(B.insT);
+  B.phase = 'peek'; B.deadline = 0;
+  const up = B.dealer[0];
+  if (up.r === 12 || up.r >= 8) {
+    B.msg = 'Le croupier vérifie sa carte cachée'; bjmBroadcast(); await wait(800); if (gen !== MP.gen) return;
+    if (bjVal(B.dealer).t === 21) { B.hole = false; B.msg = 'Blackjack de la banque'; Snd.card(); bjmBroadcast(); await wait(700); if (gen !== MP.gen) return; bjmSettle(); return; }
+    B.msg = B.seats.some(s => s.ins) ? 'Pas de blackjack pour la banque : assurances perdues' : '';
+  }
+  B.phase = 'play';
+  bjmNextTurn();
+}
+async function bjmNextTurn() {
+  const B = MP.bj, gen = MP.gen;
+  if (!B || B.phase !== 'play') return;
+  for (let si = 0; si < B.seats.length; si++) {
+    const s = B.seats[si];
+    for (let hi = 0; hi < s.hands.length; hi++) {
+      const H = s.hands[hi];
+      if (H.done) continue;
+      if (H.cards.length === 1) {
+        B.turn = { s: si, h: hi }; bjmBroadcast(); await wait(220); if (gen !== MP.gen) return;
+        H.cards.push(bjmDraw()); Snd.card(); bjmBroadcast(); await wait(340); if (gen !== MP.gen) return;
+        if (H.aces) { H.done = true; continue; }
+      }
+      if (bjVal(H.cards).t === 21 || s.gone) { H.done = true; continue; }
+      B.turn = { s: si, h: hi };
+      B.deadline = Date.now() + (mpOnlinePid(s.pid) ? 30000 : 4000);
+      bjmBroadcast();
+      clearTimeout(B.turnT);
+      const r = B.round;
+      B.turnT = setTimeout(() => {
+        if (!MP.bj || B.round !== r || B.phase !== 'play' || !B.turn || B.turn.s !== si || B.turn.h !== hi || B.busy) return;
+        B.msg = `${s.name} a mis trop de temps : sa main reste.`;
+        bjmAct(s.pid, 'stand');
+      }, B.deadline - Date.now());
+      return;
+    }
+  }
+  B.turn = null; B.deadline = 0;
+  bjmDealerPlay();
+}
+async function bjmAct(pid, a) {
+  const B = MP.bj, gen = MP.gen;
+  if (!B) return;
+  // un clic refusé renvoie quand même l'état, pour débloquer l'écran du joueur
+  if (B.phase !== 'play' || !B.turn || B.busy) { bjmBroadcast(); return; }
+  const s = B.seats[B.turn.s];
+  if (!s || s.pid !== pid) { bjmBroadcast(); return; }
+  const H = s.hands[B.turn.h];
+  if (!H || H.done) { bjmBroadcast(); return; }
+  const two = H.cards.length === 2;
+  const can = { hit: true, stand: true, double: two && !H.aces, split: two && cardVal(H.cards[0]) === cardVal(H.cards[1]) && s.hands.length < 4 && !H.aces, surrender: two && s.hands.length === 1 && !H.split };
+  if (!can[a]) { bjmBroadcast(); return; }
+  clearTimeout(B.turnT); B.busy = true; B.deadline = 0;
+  if (a !== 'stand') B.msg = '';
+  if (a === 'hit') {
+    H.cards.push(bjmDraw()); Snd.card();
+    const v = bjVal(H.cards).t;
+    if (v > 21) { H.done = true; H.res = 'bust'; H.tag = 'Dépassé'; } else if (v === 21) H.done = true;
+    bjmBroadcast(); await wait(300);
+  } else if (a === 'stand') H.done = true;
+  else if (a === 'double') {
+    s.stake = round2(s.stake + H.bet); H.bet = round2(H.bet * 2); H.doubled = true;
+    H.cards.push(bjmDraw()); Snd.card();
+    if (bjVal(H.cards).t > 21) { H.res = 'bust'; H.tag = 'Dépassé'; }
+    H.done = true; bjmBroadcast(); await wait(360);
+  } else if (a === 'split') {
+    s.stake = round2(s.stake + H.bet);
+    const c2 = H.cards.pop(), aces = c2.r === 12;
+    const N = { cards: [c2], bet: H.bet, done: false, doubled: false, split: true, aces, res: null, tag: '' };
+    H.split = true; H.aces = aces;
+    s.hands.splice(B.turn.h + 1, 0, N);
+    bjmBroadcast(); await wait(260);
+    H.cards.push(bjmDraw()); Snd.card(); bjmBroadcast(); await wait(320);
+    if (aces) { N.cards.push(bjmDraw()); Snd.card(); bjmBroadcast(); await wait(320); H.done = true; N.done = true; }
+    else if (bjVal(H.cards).t === 21) H.done = true;
+  } else if (a === 'surrender') { H.done = true; H.res = 'surrender'; H.tag = 'Abandon'; }
+  B.busy = false;
+  if (gen !== MP.gen || MP.bj !== B) return;
+  bjmNextTurn();
+}
+async function bjmDealerPlay() {
+  const B = MP.bj, gen = MP.gen;
+  B.phase = 'dealer'; B.hole = false; B.msg = ''; Snd.card(); bjmBroadcast(); await wait(650); if (gen !== MP.gen) return;
+  if (B.seats.some(s => s.hands.some(h => h.res !== 'bust' && h.res !== 'surrender'))) {
+    while (bjVal(B.dealer).t < 17) { B.dealer.push(bjmDraw()); Snd.card(); bjmBroadcast(); await wait(560); if (gen !== MP.gen) return; }
+  }
+  bjmSettle();
+}
+function bjmSettle() {
+  const B = MP.bj, d = bjVal(B.dealer).t, dBJ = B.dealer.length === 2 && d === 21;
+  B.hole = false;
+  for (const s of B.seats) {
+    if (!s.hands.length) continue;
+    let ret = 0;
+    const single = s.hands.length === 1;
+    for (const H of s.hands) {
+      const v = bjVal(H.cards).t, nat = single && !H.split && H.cards.length === 2 && v === 21;
+      let r = 0;
+      if (H.res === 'surrender') r = H.bet / 2;
+      else if (H.res === 'bust') r = 0;
+      else if (nat && !dBJ) { r = H.bet * 2.5; H.res = 'bj'; H.tag = 'Blackjack'; }
+      else if (nat && dBJ) { r = H.bet; H.res = 'push'; H.tag = 'Égalité'; }
+      else if (dBJ) { H.res = 'lose'; H.tag = 'Perdu'; }
+      else if (d > 21 || v > d) { r = H.bet * 2; H.res = 'win'; H.tag = 'Gagné'; }
+      else if (v === d) { r = H.bet; H.res = 'push'; H.tag = 'Égalité'; }
+      else { H.res = 'lose'; H.tag = 'Perdu'; }
+      ret += r;
+    }
+    if (s.ins && dBJ) ret += s.ins * 3;
+    s.ret = round2(ret); s.net = round2(ret - s.stake);
+  }
+  B.phase = 'done'; B.turn = null; B.deadline = 0;
+  B.msg = dBJ ? 'Blackjack de la banque' : d > 21 ? `La banque dépasse 21 (${d})` : `La banque fait ${d}`;
+  bjmBroadcast();
+  const r = B.round;
+  B.nextT = setTimeout(() => {
+    if (MP.bj !== B || B.round !== r) return;
+    B.round++; B.phase = 'bet'; B.msg = 'Faites vos jeux'; B.dealer = []; B.hole = true;
+    B.seats = B.seats.filter(s => !s.gone);
+    for (const s of B.seats) Object.assign(s, { bet: 0, ready: false, pass: false, hands: [], ins: 0, insd: false, stake: 0, ret: null, net: null });
+    bjmSyncSeats(); bjmBroadcast();
+  }, 5500);
+}
+// Chaque joueur règle son propre portefeuille d'après ce que la table annonce.
+function bjmApply(st) {
+  if (!st || !Array.isArray(st.seats)) return;
+  if (MP.bjv && (st.seq | 0) <= MP.bjv.seq && st.round === MP.bjv.round) return;
+  const prev = MP.bjv;
+  st.dl = st.deadline ? Date.now() + st.deadline : 0;
+  st.table = clamp(st.table | 0, 0, BJ_TABLES.length - 1);
+  st.seats.forEach(s => { s.name = cleanName(s.name) || 'Joueur'; if (!/^#[0-9A-Fa-f]{6}$/.test(s.color)) s.color = '#888888'; });
+  MP.bjv = st;
+  if (prev && prev.round !== st.round) {
+    if (S.pending.bj > 0 && MP.bjPaid !== prev.round) { credit(S.pending.bj); toast(`Ta mise de ${money(S.pending.bj)} t'a été rendue : elle n'a pas été jouée.`); S.pending.bj = 0; save(); renderWallet(); }
+    MP.bjLocal = 0; BJ.seen.clear(); BJ.flip.clear();
+  }
+  MP.bjBusy = false;
+  const mine = st.seats.find(s => s.pid === MP.me.id);
+  if (mine && st.phase !== 'bet' && mine.stake > MP.bjLocal) {
+    const d = round2(mine.stake - MP.bjLocal);
+    S.balance = round2(S.balance - d); S.pending.bj = round2(S.pending.bj + d); MP.bjLocal = mine.stake; save(); renderWallet();
+  }
+  if (mine && st.phase === 'done' && mine.ret != null && MP.bjPaid !== st.round) {
+    MP.bjPaid = st.round;
+    credit(mine.ret); S.pending.bj = 0; MP.bjLocal = 0;
+    const net = round2(mine.ret - mine.stake);
+    S.stats.bj.n++; S.stats.bj.net = round2(S.stats.bj.net + net); if (mine.hands.some(h => h.res === 'bj')) S.stats.bj.bjs++; recordBest(net);
+    addHist('blackjack', `Blackjack entre amis · mise ${money(mine.stake)}`, net);
+    save(); renderWallet();
+    if (net > 0) Snd.win(); else if (net < 0) Snd.lose();
+  }
+  if (!mpIsHost() && prev) {
+    const cnt = x => x.dealer.length + x.seats.reduce((a, s) => a + s.hands.reduce((b, h) => b + h.cards.length, 0), 0);
+    if (cnt(st) > cnt(prev)) Snd.card();
+  }
+  if (VIEW === 'blackjack') bjRender();
+}
+// Boutons grisés le temps que la table réponde, avec une sécurité si la réponse se perd.
+function bjmBusy() { MP.bjBusy = true; clearTimeout(MP.bjBusyT); MP.bjBusyT = setTimeout(() => { if (MP.bjBusy) { MP.bjBusy = false; if (VIEW === 'blackjack') bjRender(); } }, 2500); }
+function mpBjSend(m) { if (mpIsHost()) bjmMsg({ id: MP.me.id }, m); else mpSend('h', m); }
+function bjmCmd(c) {
+  const st = MP.bjv; if (!st) return;
+  const t = BJ_TABLES[st.table], mine = st.seats.find(s => s.pid === MP.me.id);
+  if (!mine) return;
+  if (c === 'bet') {
+    if (st.phase !== 'bet' || mine.ready) return;
+    const amt = BJ.bet;
+    if (amt < t.min) { toast(`Mise minimum à cette table : ${money(t.min)}.`); return; }
+    if (!debit(amt)) { lowFunds(); return; }
+    S.pending.bj = round2(S.pending.bj + amt); MP.bjLocal = amt; BJ.last = amt; BJ.bet = 0; BJ.undo = [];
+    save(); renderWallet(); Snd.chip();
+    mpBjSend({ k: 'bjbet', bet: amt });
+  } else if (c === 'unbet') {
+    if (st.phase !== 'bet') return;
+    if (MP.bjLocal > 0) { credit(MP.bjLocal); S.pending.bj = round2(Math.max(0, S.pending.bj - MP.bjLocal)); MP.bjLocal = 0; save(); renderWallet(); }
+    mpBjSend({ k: 'bjunbet' });
+  } else if (c === 'pass') mpBjSend({ k: 'bjpass' });
+  else if (c === 'deal') { if (mpIsHost()) bjmDeal(); }
+  else if (c === 'fund') openWallet();
+  else if (c === 'ins-yes' || c === 'ins-no') { bjmBusy(); mpBjSend({ k: 'bjins', take: c === 'ins-yes' }); bjRender(); }
+  else if (['hit', 'stand', 'double', 'split', 'surrender'].includes(c)) { if (MP.bjBusy || st.busy) return; bjmBusy(); mpBjSend({ k: 'bjact', a: c }); bjRender(); }
+}
+function bjmRender() {
+  const st = MP.bjv, t = BJ_TABLES[st ? st.table : 0];
+  $('#bj-table').disabled = true; $('#bj-table').closest('label').hidden = true;
+  $('#bj-hints').setAttribute('aria-pressed', String(!!S.settings.hints));
+  const handsEl = $('#bj-hands');
+  handsEl.classList.add('multi');
+  if (!st) { $('#bj-dcards').innerHTML = ''; handsEl.innerHTML = '<p class="fine" style="color:var(--print)">Connexion à la table…</p>'; $('#bj-tray').innerHTML = ''; return; }
+  const hidden = st.dealer.some(c => c.r < 0);
+  $('#bj-dcards').innerHTML = st.dealer.map(c => cardHTML(Math.max(0, c.r), Math.max(0, c.s), { id: c.id, down: c.r < 0, seen: BJ.seen, flip: BJ.flip })).join('');
+  $('#bj-dtot').textContent = st.dealer.length ? (hidden ? totText([st.dealer[0]], false) : totText(st.dealer, true)) : '';
+  const dv = st.dealer.length && !hidden ? bjVal(st.dealer) : null;
+  $('#bj-dtag').innerHTML = dv && dv.t > 21 ? '<span class="tag">Dépassé</span>' : dv && dv.t === 21 && st.dealer.length === 2 ? '<span class="tag">Blackjack</span>' : '';
+  handsEl.innerHTML = st.seats.map((s, si) => {
+    const me = s.pid === MP.me.id;
+    const hands = s.hands.length ? s.hands.map((H, hi) => {
+      const act = st.phase === 'play' && st.turn && st.turn.s === si && st.turn.h === hi;
+      const good = H.res === 'win' || H.res === 'bj';
+      return `<div class="hand${act ? ' active' : ''} ${H.res || ''}"><div class="cards">${H.cards.map(c => cardHTML(c.r, c.s, { id: c.id, seen: BJ.seen })).join('')}</div>
+        <div class="hand-info"><span class="tot">${H.cards.length ? totText(H.cards, H.done || st.phase !== 'play') : ''}</span>${H.tag ? `<span class="tag${good ? ' good' : ''}">${H.tag}</span>` : ''}</div>
+        <div class="hand-bet">${bjBetHTML(H)}</div>${act ? mpTimerHTML(st.dl) : ''}</div>`;
+    }).join('') : `<div class="mseat-idle">${st.phase === 'bet' ? (s.pass ? 'Passe cette main' : s.ready ? `${stackHTML(s.bet, 30)}<span>${money(s.bet)}</span>` : me && BJ.bet ? `${stackHTML(BJ.bet, 30)}<span>${money(BJ.bet)}</span>` : 'Choisit sa mise…') : 'Ne joue pas cette main'}</div>`;
+    return `<div class="mseat${me ? ' me' : ''}${s.gone ? ' gone' : ''}" style="--pc:${s.color}"><div class="mname"><i></i>${esc(me ? 'Toi' : s.name)}${s.ins ? ' · assuré' : ''}${s.net != null && st.phase === 'done' ? ` <b>${money(s.net, true)}</b>` : ''}</div><div class="mhands">${hands}</div></div>`;
+  }).join('') || '<p class="fine" style="color:var(--print)">En attente de joueurs…</p>';
+  $('#bj-msg').innerHTML = st.msg ? `<span>${esc(st.msg)}</span>` : '';
+  $('#bj-shoe-fill').style.width = (st.shoe ? st.shoe / 312 * 100 : 100) + '%';
+  bjmTray(st, t);
+  $('#bj-stat').innerHTML = `<span>Table entre amis · ${t.name}, ${money(t.min)} à ${money(t.max)}</span><span>Sabot : ${st.shoe || 312} cartes</span><span>Résultat au blackjack : <b class="${S.stats.bj.net > 0 ? 'pos' : S.stats.bj.net < 0 ? 'neg' : ''}">${money(S.stats.bj.net, true)}</b></span>`;
+}
+function bjmTray(st, t) {
+  const tray = $('#bj-tray'), host = mpIsHost(), mine = st.seats.find(s => s.pid === MP.me.id);
+  if (!mine) { tray.innerHTML = '<div class="pk-info"><b>La table est complète.</b><span>Tu regardes la partie : une place se libère dès qu\'un joueur part.</span></div>'; return; }
+  const live = st.seats.filter(s => !s.gone), ready = live.filter(s => s.ready).length;
+  if (st.phase === 'bet') {
+    const dealBtn = host ? `<button type="button" class="btn${mine.ready ? ' primary big' : ''}" data-bjm="deal"${st.seats.some(s => s.bet > 0) ? '' : ' disabled'}>Distribuer</button>` : '';
+    if (!mine.ready) {
+      const broke = !BJ.bet && S.balance < t.min;
+      tray.innerHTML = `${rackHTML(t.chips, null, Infinity)}
+        <div class="readout"><span class="lbl">Ta mise</span><b>${money(BJ.bet)}</b><small>${broke ? `Solde insuffisant (${money(t.min)} minimum)` : `${money(t.min)} à ${money(t.max)} · ${ready}/${live.length} prêts`}</small></div>
+        <div class="tray-btns">
+          <button type="button" class="btn" data-bj="undo"${BJ.undo.length ? '' : ' disabled'}>Annuler</button>
+          ${!BJ.bet && BJ.last ? `<button type="button" class="btn" data-bj="rebet">Rejouer ${money(BJ.last)}</button>` : `<button type="button" class="btn" data-bj="clear"${BJ.bet ? '' : ' disabled'}>Effacer</button>`}
+          <button type="button" class="btn" data-bjm="pass">Passer</button>${dealBtn}
+          ${broke ? '<button type="button" class="btn accent big" data-bjm="fund">Alimenter</button>' : `<button type="button" class="btn primary big" data-bjm="bet"${BJ.bet >= t.min ? '' : ' disabled'}>Miser <kbd>Espace</kbd></button>`}
+        </div>`;
+    } else {
+      tray.innerHTML = `<div class="pk-info"><b>${mine.pass ? 'Tu passes cette main.' : `Ta mise : ${money(mine.bet)}`}</b><span>${ready}/${live.length} joueurs prêts. ${host ? 'La donne part dès que tout le monde est prêt, ou distribue tout de suite.' : 'La donne part dès que tout le monde est prêt.'}</span></div>
+        <div class="tray-btns"><button type="button" class="btn" data-bjm="unbet">${mine.pass ? 'Je joue finalement' : 'Retirer ma mise'}</button>${dealBtn}</div>`;
+    }
+    return;
+  }
+  if (st.phase === 'ins') {
+    if (mine.hands.length && !mine.insd && !MP.bjBusy) {
+      const amt = round2(mine.hands[0].bet / 2);
+      tray.innerHTML = `<div class="readout"><span class="lbl">Assurance</span><b>${money(amt)}</b><small>Payée 2 contre 1 si la banque a blackjack</small></div>
+        <div class="tray-btns"><button type="button" class="btn" data-bjm="ins-no">Non merci <kbd>N</kbd></button><button type="button" class="btn primary big" data-bjm="ins-yes"${S.balance >= amt ? '' : ' disabled'}>Prendre l'assurance <kbd>O</kbd></button></div>${mpTimerHTML(st.dl)}`;
+    } else tray.innerHTML = '<div class="pk-info"><b>Les joueurs choisissent leur assurance…</b></div>';
+    return;
+  }
+  if (st.phase === 'play' && st.turn) {
+    const s = st.seats[st.turn.s];
+    if (s && s.pid === MP.me.id) {
+      const H = s.hands[st.turn.h], two = H.cards.length === 2;
+      const can = MP.bjBusy || st.busy || H.cards.length < 2 ? {} : { hit: true, stand: true, double: two && !H.aces && S.balance >= H.bet, split: two && cardVal(H.cards[0]) === cardVal(H.cards[1]) && s.hands.length < 4 && !H.aces && S.balance >= H.bet, surrender: two && s.hands.length === 1 && !H.split };
+      const adv = S.settings.hints && can.hit ? bjAdvice(H, st.dealer[0], can) : null;
+      const b = (k, label, key) => `<button type="button" class="btn${adv === k ? ' advice' : ''}" data-bjm="${k}"${can[k] ? '' : ' disabled'}>${label} <kbd>${key}</kbd></button>`;
+      tray.innerHTML = `<div class="acts">${b('hit', 'Tirer', 'T')}${b('stand', 'Rester', 'R')}${b('double', 'Doubler', 'D')}${b('split', 'Séparer', 'S')}${b('surrender', 'Abandonner', 'A')}</div>
+        <div class="readout"><span class="lbl">À toi</span><b>${money(s.stake)}</b>${adv ? `<small class="advice-line">Conseil : <b>${ACT_LABEL[adv]}</b></small>` : `<small>${s.hands.length > 1 ? `Main ${st.turn.h + 1} sur ${s.hands.length}` : 'À toi de jouer'}</small>`}</div>`;
+      return;
+    }
+    tray.innerHTML = `<div class="pk-info"><b>${esc(s ? s.name : '')} joue…</b><span>${mine.hands.length ? 'Ta main attend la fin du tour.' : 'Tu ne joues pas cette main.'}</span></div>`;
+    return;
+  }
+  if (st.phase === 'done') {
+    const r = mine.net;
+    tray.innerHTML = `<div class="pk-info"><b>${mine.hands.length ? (r > 0 ? `Tu gagnes ${money(r, true)}` : r < 0 ? `Tu perds ${money(r)}` : 'Égalité : mise rendue') : 'Tu ne jouais pas cette main.'}</b><span>Nouvelle donne dans quelques secondes.</span></div>`;
+    return;
+  }
+  tray.innerHTML = `<div class="pk-info"><b>${st.phase === 'dealer' ? 'La banque joue…' : 'Distribution…'}</b></div>`;
+}
 
 /* ================= clavier ================= */
 document.addEventListener('keydown', e => {
@@ -2334,7 +3497,13 @@ document.addEventListener('keydown', e => {
   const tag = (e.target.tagName || '').toLowerCase();
   if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
   const k = e.key.toLowerCase();
-  if (VIEW === 'blackjack') {
+  if (VIEW === 'blackjack' && mpIs('blackjack')) {
+    const st = MP.bjv; if (!st) return;
+    const map = { t: 'hit', r: 'stand', d: 'double', s: 'split', a: 'surrender' };
+    if ((k === ' ' || k === 'enter') && st.phase === 'bet') { e.preventDefault(); bjmCmd('bet'); }
+    else if (map[k] && st.phase === 'play' && st.turn && st.seats[st.turn.s] && st.seats[st.turn.s].pid === MP.me.id) { e.preventDefault(); bjmCmd(map[k]); }
+    else if (st.phase === 'ins' && (k === 'o' || k === 'n')) { e.preventDefault(); bjmCmd(k === 'o' ? 'ins-yes' : 'ins-no'); }
+  } else if (VIEW === 'blackjack') {
     const map = { t: 'hit', r: 'stand', d: 'double', s: 'split', a: 'surrender' };
     if ((k === ' ' || k === 'enter') && BJ.phase === 'bet') { e.preventDefault(); bjDeal(); }
     else if (map[k] && BJ.phase === 'play') { e.preventDefault(); bjAct(map[k]); }
@@ -2343,12 +3512,12 @@ document.addEventListener('keydown', e => {
     if (k === ' ' || k === 'enter') { e.preventDefault(); roSpin(); }
     else if (k === 'backspace') { e.preventDefault(); roCmd('undo'); }
   } else if (VIEW === 'poker' && PK.phase !== 'setup') {
-    if (PK.phase === 'between' && k === 'enter' && PK.seats[0].stack > 0) { e.preventDefault(); clearTimeout(PK.autoT); pkStartHand(); return; }
+    if (PK.phase === 'between' && k === 'enter' && PK.seats[0] && PK.seats[0].stack > 0 && !mpPkGuest()) { e.preventDefault(); clearTimeout(PK.autoT); pkStartHand(); return; }
     if (!PK.waitHuman || PK.toAct !== 0) return;
     const me = PK.seats[0];
-    if (k === 'c') pkApply(0, 'fold');
-    else if (k === 's') pkApply(0, PK.curBet - me.bet > 0 ? 'call' : 'check');
-    else if (k === 'r' && $('#pk-rv')) pkApply(0, 'raise', PK.raiseTo);
+    if (k === 'c') pkHumanAct('fold');
+    else if (k === 's') pkHumanAct(PK.curBet - me.bet > 0 ? 'call' : 'check');
+    else if (k === 'r' && $('#pk-rv')) pkHumanAct('raise', PK.raiseTo);
   }
 });
 
@@ -2374,7 +3543,8 @@ function onboard() {
   const sugg = 'Joueur ' + (1000 + rngInt(9000));
   modal({
     title: 'Bienvenue au Cercle 37', dismiss: false,
-    body: `<p>Blackjack, roulette et poker, en solo. L'argent est fictif et ta partie s'enregistre toute seule sur cet appareil.</p>
+    body: `<p>Blackjack, roulette et poker, seul ou entre amis. L'argent est fictif et ta partie s'enregistre toute seule sur cet appareil.</p>
+      ${MP.pendingJoin ? '<p class="warn">Tu es invité à une table entre amis : choisis ton pseudo, tu arrives à la table juste après.</p>' : ''}
       ${CHALLENGE ? `<p class="warn"><b>${esc(CHALLENGE.p)}</b> te lance un défi : résultat net de ${money(CHALLENGE.n, true)}. Fais mieux.</p>` : ''}
       <div class="field"><label class="flabel" for="ob-name">Ton pseudo</label><input type="text" id="ob-name" maxlength="20" value="${sugg}"></div>
       <div class="field"><div class="flabel">Premier dépôt</div><div class="seg" id="ob-dep">${[500, 1000, 5000, 10000].map(v => `<button type="button" data-v="${v}" class="${v === 1000 ? 'on' : ''}">${money(v)}</button>`).join('')}</div><p class="fine">Tu pourras recharger à tout moment avec le bouton + en haut.</p></div>`,
@@ -2383,6 +3553,7 @@ function onboard() {
       const v = +($('#ob-dep .on', m) || {}).dataset.v || 1000;
       S = fresh(name); save(); close();
       renderWallet(); deposit(v); show(VIEW);
+      if (MP.pendingJoin) { const c = MP.pendingJoin; MP.pendingJoin = null; setTimeout(() => mpJoin(c), 300); }
     } }],
     onMount(m) {
       $('#ob-dep', m).onclick = e => { const b = e.target.closest('[data-v]'); if (!b) return; $$('#ob-dep button', m).forEach(x => x.classList.toggle('on', x === b)); };
@@ -2396,6 +3567,7 @@ function boot() {
   let importSave = null;
   if (hash.startsWith('d-')) CHALLENGE = readChallenge(hash.slice(2));
   else if (hash.startsWith('s-')) importSave = readSave(hash.slice(2));
+  else if (hash.startsWith('r-')) MP.pendingJoin = hash.slice(2);
   else if (['blackjack', 'roulette', 'poker', 'salon'].includes(hash)) VIEW = hash;
   S = load();
   if (S) {
@@ -2416,6 +3588,7 @@ function boot() {
     show(VIEW);
     notes.forEach(n => toast(n));
     if (importSave && importSave.tok !== S.lastImport) setTimeout(() => offerImport(importSave), 200);
+    if (MP.pendingJoin) { const c = MP.pendingJoin; MP.pendingJoin = null; setTimeout(() => mpJoin(c), 300); }
   } else {
     renderWallet();
     if (importSave) {
@@ -2425,6 +3598,12 @@ function boot() {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (S) refreshViews(); });
   if (!storageOk) setTimeout(() => toast('Ce navigateur bloque l\'enregistrement : garde ton code de sauvegarde (menu profil).'), 800);
 }
+// Un lien d'invitation ouvert dans un onglet déjà sur le site : on rejoint la table sans recharger.
+window.addEventListener('hashchange', () => {
+  let h = location.hash.slice(1);
+  try { h = decodeURIComponent(h); } catch (e) { /* lien abîmé */ }
+  if (h.startsWith('r-') && S) mpJoin(h.slice(2));
+});
 boot();
 })();
 </script>
